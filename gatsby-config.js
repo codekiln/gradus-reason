@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `My website`
+    title: `Gradus Reason`
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': `AuthorJson`
@@ -66,5 +66,6 @@ module.exports = {
     // resistant to bad networks. Works with almost any
     // site!
     `gatsby-plugin-offline`
-  ]
+  ],
+  pathPrefix: `/gradus-reason`
 };
