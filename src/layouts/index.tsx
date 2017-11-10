@@ -43,10 +43,10 @@ export default class DefaultLayout extends React.PureComponent<DefaultLayoutProp
                     {/* Footer */}
                     <Segment inverted vertical style={{position: "absolute", bottom: 0, width: "100%"}}>
                         <Container textAlign="center">
-                            <Link to={"https://github.com/codekiln/gradus-reason"}>
+                            <a href={"https://github.com/codekiln/gradus-reason"}>
                                 <Icon circular link color="red" size="big" name="github"/>
                                 Github
-                            </Link>
+                            </a>
                         </Container>
                     </Segment>
                 </Sidebar.Pusher>
