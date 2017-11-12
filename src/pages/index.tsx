@@ -1,16 +1,17 @@
 import * as React from "react";
 import Link from "gatsby-link";
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
-import { menuItems } from "../layouts";
-import {
-  Button,
-  Segment,
-  Container,
-  Grid,
-  Header,
-  Icon,
-} from "semantic-ui-react";
-import * as reasonLogo from "../images/reason_300.png";
+import {menuItems} from "../layouts";
+import {Button, Card, Container, Grid, Header, Image, Segment} from "semantic-ui-react";
+import * as reasonWordLogo from "../images/reason_300.png";
+import * as reasonIcon from "../images/icon_75.png";
+import * as ocamlLogo from "../images/ocaml.svg";
+import * as jsLogo from "../images/js_logo.svg";
+import * as gradus1 from "../images/gradus_1.jpg";
+import * as gradus2 from "../images/gradus_2.jpg";
+import * as gradus3 from "../images/gradus_3.jpg";
+import * as gradus5 from "../images/gradus_5.jpg";
+import * as gradus6 from "../images/gradus_6.jpg";
 
 interface IndexPageProps {
   location: {
@@ -26,86 +27,125 @@ export default (props: IndexPageProps) =>
         Link={Link} pathname={props.location.pathname} items={menuItems}
       />
       <Container text>
-        <Header as="h1">Gradus <img src={reasonLogo} alt="Reason"/></Header>
+        <Header as="h1">Gradus <img src={reasonWordLogo} alt="Reason"/></Header>
         <Header as="h2">Steps to learning Reason OCaml</Header>
-        {/*<Button primary size="huge">Get started!</Button>*/}
+        <Button primary size="huge"><Link to="/steps/">Get started!</Link></Button>
       </Container>
     </Segment>
 
     {/* About the site */}
     <Segment vertical className="stripe" inverted>
-      <Grid stackable verticalAlign="middle" className="container">
-        <Grid.Row>
-          <Grid.Column width="8">
-            <Header inverted>Lorem ipsum</Header>
+      <Container text>
+        <Grid stackable verticalAlign="middle" className="container">
+          <Grid.Row width="8">
+            <Header inverted>
+              <Image inline src={reasonIcon}
+                     as="a" href="https://reasonml.github.io/" target="_blank" size="tiny" spaced="right"/>
+              Why Reason?
+            </Header>
+
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Porro laudantium ad, quae, perspiciatis ipsa distinctio.
-                </p>
-            <Header inverted>Dolor sit amet</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Porro laudantium ad, quae, perspiciatis ipsa distinctio.
-                </p>
-          </Grid.Column>
-          <Grid.Column width="6" floated="right">
-            {/* TODO replace with a pretty GIF */}
-            <Header inverted>Lorem ipsum</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Porro laudantium ad, quae, perspiciatis ipsa distinctio.
-                </p>
-            <Header inverted>Dolor sit amet</Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Porro laudantium ad, quae, perspiciatis ipsa distinctio.
-                </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+              As a strongly typed functional language, <a
+              target="_blank" href="https://reasonml.github.io/">Reason</a> can decrease the number of tests
+              needed to maintain correctness over the lifetime of the program.
+
+              <a target="_blank" href="https://www.youtube.com/watch?v=L0xz-ILKsLE">&nbsp;
+                Tests explain you what <em>remember</em> about your program;
+                types tell you what you <em>forgot</em>.
+              </a>
+            </p>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column width="7">
+              <Header inverted>
+                <Image inline src={ocamlLogo}
+                       as="a" href="https://ocaml.org/" target="_blank" size="tiny" spaced="right"/>
+                OCaml Tradition
+              </Header>
+              <p>
+                As <a href="https://ocaml.org/">a syntax of OCaml</a>, Reason can compile to fast bytecode on most OSs,
+                and has deep roots in systems programming. You can write rock-solid server-side APIs,
+                libraries and command line applications in Reason.
+              </p>
+            </Grid.Column>
+            <Grid.Column width="7">
+              <Header inverted>
+                <Image inline src={jsLogo}
+                       as="a" href="https://reasonml.github.io/guide/what-and-why" target="_blank" size="tiny"
+                       spaced="right"/>
+                JavaScript Community
+              </Header>
+              <p>
+                As language that <a target="_blank" href="https://reasonml.github.io/guide/what-and-why">can both use
+                and compile to human-readable Javascript</a>, Reason lets you leverage the npm ecosystem
+                into into higher performance, correctness and portability outside of the node runtime.
+              </p>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
     </Segment>
 
-    {/* Key features */}
-    <Segment vertical className="stripe alternate feature">
-      <Grid columns="3" textAlign="center" divided relaxed stackable className="container">
-        <Grid.Row>
-          <Grid.Column>
-            <Header icon>
-              <Icon name="wizard"></Icon>
-              A kind of magic!
-            </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Voluptas eaque at quae cupiditate aspernatur quibusdam!
-                  Distinctio quod non, harum dolorum earum molestias,
-                  beatae expedita aliquam dolorem asperiores nemo amet quaerat.
+    {/* Why Gradus? */}
+    <Segment raised vertical centered clearing className="stripe feature">
+      <Container>
+        <Header as="h3" centered>About <em>Gradus Reason</em></Header>
+        <Card.Group stackable itemsPerRow="3">
+          <Card>
+            <Card.Content>
+              <Card.Header>
+                What is this site?
+              </Card.Header>
+              <Card.Description>
+                <p>This site is a collection of steps for learning and using Reason.
+                The <Link to="/steps/">steps</Link> give practical examples that go beyond the
+                core <Link to="https://reasonml.github.io/guide/">Reason Guide</Link>.
                 </p>
-          </Grid.Column>
-          <Grid.Column>
-            <Header icon>
-              <Icon name="wizard"></Icon>
-              A kind of magic!
-            </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Voluptas eaque at quae cupiditate aspernatur quibusdam!
-                  Distinctio quod non, harum dolorum earum molestias,
-                  beatae expedita aliquam dolorem asperiores nemo amet quaerat.
+                <Image centered size="medium" src={gradus1}/>
+              </Card.Description>
+            </Card.Content>
+          </Card>
+          <Card>
+            <Card.Content>
+              <Card.Header>
+                What does <em>Gradus Reason</em> mean?
+              </Card.Header>
+              <Card.Description>
+                <p>
+                <em>Gradus</em> is the
+                latin word for "Steps." Many of the earliest textbooks were titled <a
+                href="https://en.wikipedia.org/wiki/Gradus_ad_Parnassum"><em>Gradus ad Parnassum</em></a>,
+                or "steps to Parnassus," a mountain region in Greece. The manuals were used in schools to aid
+                in learning how to write Greek and Latin verse.
                 </p>
-          </Grid.Column>
-          <Grid.Column>
-            <Header icon>
-              <Icon name="wizard"></Icon>
-              A kind of magic!
-            </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Voluptas eaque at quae cupiditate aspernatur quibusdam!
-                  Distinctio quod non, harum dolorum earum molestias,
-                  beatae expedita aliquam dolorem asperiores nemo amet quaerat.
+                <Image centered size="small" src={gradus2}/>
+                <Image centered size="small" src={gradus3}/>
+              </Card.Description>
+            </Card.Content>
+          </Card>
+          <Card>
+            <Card.Content>
+              <Card.Header>
+                I'm learning Reason! May I contribute content?
+              </Card.Header>
+              <Card.Description>
+                <p>
+                  Please do! This project was started
+                  with the intention of helping the community
+                  document examples of how to do basic, useful
+                  things with Reason.
+                  Please submit a pull request to
+                  the <a href="https://github.com/codekiln/gradus-reason">github
+                  repo</a>.
                 </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+                <Image centered size="small" src={gradus6}/>
+                <Image centered size="small" src={gradus5}/>
+              </Card.Description>
+            </Card.Content>
+          </Card>
+        </Card.Group>
+      </Container>
+
     </Segment>
   </div>;

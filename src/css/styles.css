@@ -27,12 +27,17 @@
   font-weight: normal;
 }
 
+.masthead button a {
+  color: inherit;
+}
+
 .ui.vertical.stripe {
-  padding: 8em 0;
+  padding: 6em 0;
 }
 
 .ui.vertical.stripe h3 {
   font-size: 2em;
+  margin-bottom: 1em;
 }
 
 .ui.vertical.stripe .button + h3,
