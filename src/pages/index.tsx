@@ -10,6 +10,7 @@ import {
   Header,
   Icon,
 } from "semantic-ui-react";
+import * as reasonLogo from "../images/reason_300.png";
 
 interface IndexPageProps {
   location: {
@@ -19,29 +20,29 @@ interface IndexPageProps {
 
 export default (props: IndexPageProps) =>
   <div>
-    {/* Master head */}
-    <Segment vertical inverted textAlign="center" className="masthead">
+    {/* Masthead */}
+    <Segment vertical textAlign="center" className="masthead">
       <HeaderMenu
-        Link={Link} pathname={props.location.pathname} items={menuItems} inverted
+        Link={Link} pathname={props.location.pathname} items={menuItems}
       />
       <Container text>
-        <Header inverted as="h1">Gradus Reason</Header>
-        <Header inverted as="h2">Steps to learning Reason / OCaml</Header>
+        <Header as="h1">Gradus <img src={reasonLogo} alt="Reason"/></Header>
+        <Header as="h2">Steps to learning Reason OCaml</Header>
         {/*<Button primary size="huge">Get started!</Button>*/}
       </Container>
     </Segment>
 
     {/* About the site */}
-    <Segment vertical className="stripe">
+    <Segment vertical className="stripe" inverted>
       <Grid stackable verticalAlign="middle" className="container">
         <Grid.Row>
           <Grid.Column width="8">
-            <Header>Lorem ipsum</Header>
+            <Header inverted>Lorem ipsum</Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Porro laudantium ad, quae, perspiciatis ipsa distinctio.
                 </p>
-            <Header>Dolor sit amet</Header>
+            <Header inverted>Dolor sit amet</Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Porro laudantium ad, quae, perspiciatis ipsa distinctio.
@@ -49,12 +50,12 @@ export default (props: IndexPageProps) =>
           </Grid.Column>
           <Grid.Column width="6" floated="right">
             {/* TODO replace with a pretty GIF */}
-            <Header>Lorem ipsum</Header>
+            <Header inverted>Lorem ipsum</Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Porro laudantium ad, quae, perspiciatis ipsa distinctio.
                 </p>
-            <Header>Dolor sit amet</Header>
+            <Header inverted>Dolor sit amet</Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Porro laudantium ad, quae, perspiciatis ipsa distinctio.

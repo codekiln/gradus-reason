@@ -10,8 +10,7 @@ import "prismjs/themes/prism-okaidia.css";
 
 export const menuItems = [
     {name: "Home", path: "/", exact: true, icon: "home", inverted: true},
-    {name: "Steps", path: "/steps/", exact: false, icon: "newspaper"},
-    {name: "About", path: "/about/", exact: true, icon: "info circle"},
+    {name: "Steps", path: "/steps/", exact: false, icon: "book"},
 ];
 
 interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
@@ -24,7 +23,7 @@ interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
 export default class DefaultLayout extends React.PureComponent<DefaultLayoutProps, void> {
     render() {
         const {pathname} = this.props.location;
-        const isHome = pathname === "/";
+        const isHome = pathname === "/" || pathname === "/gradus-reason/";
 
         return (
             <Sidebar.Pushable as={Segment}>
@@ -44,8 +43,7 @@ export default class DefaultLayout extends React.PureComponent<DefaultLayoutProp
                     <Segment inverted vertical style={{position: "absolute", bottom: 0, width: "100%"}}>
                         <Container textAlign="center">
                             <a href={"https://github.com/codekiln/gradus-reason"}>
-                                <Icon circular link color="red" size="big" name="github"/>
-                                Github
+                                <Icon circular link color="pink" size="big" name="github"/>
                             </a>
                         </Container>
                     </Segment>

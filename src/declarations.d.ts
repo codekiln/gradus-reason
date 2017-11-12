@@ -4,4 +4,6 @@ declare module "*/package.json" {
   export const author: string;
 }
 
+declare module "*.png";
+
 declare const graphql: (query: TemplateStringsArray) => void;

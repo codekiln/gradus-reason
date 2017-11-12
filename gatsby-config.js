@@ -67,5 +67,9 @@ module.exports = {
     // site!
     `gatsby-plugin-offline`
   ],
+  // Enable prefixing paths with this so that it works
+  // from https://codekiln.github.io/gradus-reason/ rather
+  // than being served from root folder of domain
+  // see also https://www.gatsbyjs.org/docs/path-prefix/
   pathPrefix: `/gradus-reason`
 };
