@@ -3,6 +3,7 @@
 
 import * as React from "react";
 import Helmet from "react-helmet";
+import * as favicon from "./favicon.png";
 
 // Load production style
 let styles: string;
@@ -35,7 +36,9 @@ module.exports = (props: HtmlProps) => {
     <html lang="en">
       <head>
         {props.headComponents}
-        <title>My website</title>
+        <title>Gradus Reason</title>
+        <link rel="shortcut icon" type="image/x-icon" href={favicon} />
+
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
