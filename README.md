@@ -1,9 +1,8 @@
 # Gradus Reason
 
-A site with community posts for learning [Reason / OCaml](https://reasonml.github.io/).  
-Go to the [site](https://codekiln.github.io/gradus-reason/).  
-
-Contributors welcome! 
+-   A community site for learning [Reason OCaml](https://reasonml.github.io/).  
+-   Go to the [site](https://codekiln.github.io/gradus-reason/).  
+-   Contributors welcome! 
 
 ## Colophon
 
