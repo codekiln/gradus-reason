@@ -23,7 +23,7 @@ interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
 export default class DefaultLayout extends React.PureComponent<DefaultLayoutProps, void> {
   render() {
     const {pathname} = this.props.location;
-    const isHome = pathname === "/" || pathname === "/gradus-reason/";
+    const isHome = pathname === "/" || pathname === "/gradus-reason" || pathname === "/gradus-reason/";
 
     return (
       <Sidebar.Pushable as={Segment}>

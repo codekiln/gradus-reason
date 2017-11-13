@@ -3,6 +3,7 @@ import Link from "gatsby-link";
 import { Header, Container, Segment, Icon, Label, Button, Grid, Card, Image, Item, Comment } from "semantic-ui-react";
 import { MarkdownRemark, ImageSharp, MarkdownRemarkConnection } from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
+import {getPrefixedSrcSet, withPrefix} from "../gatsby-utils";
 
 interface BlogPostProps {
   data: {
@@ -22,13 +23,14 @@ export default (props: BlogPostProps) => {
     .map(({ node }) => {
       const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
       const recentCover = node.frontmatter.image.children[0] as ImageSharp;
+      const avatarImage = (<Image inline spaced="right">
+        <img src={withPrefix(recentAvatar.responsiveResolution.src)}
+          srcSet={getPrefixedSrcSet(recentAvatar.responsiveResolution.srcSet)}/>
+      </Image>);
       const extra = (
         <Comment.Group>
           <Comment>
-            <Comment.Avatar
-              src={recentAvatar.responsiveResolution.src}
-              srcSet={recentAvatar.responsiveResolution.srcSet}
-            />
+              {avatarImage}
             <Comment.Content>
               <Comment.Author style={{ fontWeight: 400 }}>
                 {frontmatter.author.id}
@@ -41,14 +43,15 @@ export default (props: BlogPostProps) => {
         </Comment.Group>
       );
 
+      const cardImage = (<Image>
+        <img src={withPrefix(recentCover.responsiveResolution.src)}
+          srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}/>
+      </Image>);
       return (
         <div key={node.fields.slug} style={{paddingBottom: "1em"}}>
           <Card as={Link}
             to={node.fields.slug}
-            image={{
-              src: recentCover.responsiveResolution.src,
-              srcSet: recentCover.responsiveResolution.srcSet,
-            }}
+            image={cardImage}
             header={node.frontmatter.title}
             extra={extra}
           />
@@ -57,16 +60,15 @@ export default (props: BlogPostProps) => {
     });
 
   const recentCover = frontmatter.image.children[0] as ImageSharp;
+  const itemImg = (<img src={withPrefix(avatar.responsiveResolution.src)}
+                  srcSet={getPrefixedSrcSet(avatar.responsiveResolution.srcSet)}/> );
   return (
     <Container>
       <BlogTitle />
       <Segment vertical style={{ border: "none" }}>
         <Item.Group>
           <Item>
-            <Item.Image size="tiny" shape="circular"
-              src={avatar.responsiveResolution.src}
-              srcSet={avatar.responsiveResolution.srcSet}
-            />
+            <Item.Image size="tiny" shape="circular">{itemImg}</Item.Image>
             <Item.Content>
               <Item.Description>{frontmatter.author.id}</Item.Description>
               <Item.Meta>{frontmatter.author.bio}</Item.Meta>
@@ -76,11 +78,12 @@ export default (props: BlogPostProps) => {
         </Item.Group>
         <Header as="h1">{frontmatter.title}</Header>
       </Segment>
-        <Image
-          src={recentCover.responsiveResolution.src}
-          srcSet={recentCover.responsiveResolution.srcSet}
-          fluid
-        />
+        <Image fluid>
+          <img
+            src={withPrefix(recentCover.responsiveResolution.src)}
+            srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}
+          />
+        </Image>
       <Segment vertical
         style={{ border: "none" }}
         dangerouslySetInnerHTML={{

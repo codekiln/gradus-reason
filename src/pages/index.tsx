@@ -99,8 +99,8 @@ export default (props: IndexPageProps) =>
               </Card.Header>
               <Card.Description>
                 <p>This site is a collection of steps for learning and using Reason.
-                The <Link to="/steps/">steps</Link> give practical examples that go beyond the
-                core <Link to="https://reasonml.github.io/guide/">Reason Guide</Link>.
+                  The <Link to="/steps/">steps</Link> give practical examples that go beyond the
+                  core <Link to="https://reasonml.github.io/guide/">Reason Guide</Link>.
                 </p>
                 <Image centered size="medium" src={gradus1}/>
               </Card.Description>
@@ -113,11 +113,11 @@ export default (props: IndexPageProps) =>
               </Card.Header>
               <Card.Description>
                 <p>
-                <em>Gradus</em> is the
-                latin word for "Steps." Many of the earliest textbooks were titled <a
-                href="https://en.wikipedia.org/wiki/Gradus_ad_Parnassum"><em>Gradus ad Parnassum</em></a>,
-                or "steps to Parnassus," a mountain region in Greece. The manuals were used in schools to aid
-                in learning how to write Greek and Latin verse.
+                  <em>Gradus</em> is the
+                  latin word for "Steps." Many of the earliest textbooks were titled <a
+                  href="https://en.wikipedia.org/wiki/Gradus_ad_Parnassum"><em>Gradus ad Parnassum</em></a>,
+                  or "steps to Parnassus," a mountain region in Greece. These books provided a way
+                  for scholars to <em>gradually</em> learn how to write Greek and Latin verse.
                 </p>
                 <Image centered size="small" src={gradus2}/>
                 <Image centered size="small" src={gradus3}/>
