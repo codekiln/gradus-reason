@@ -64,8 +64,8 @@ export default (props: IndexPageProps) =>
                 OCaml Rigor
               </Header>
               <p>
-                As <a href="https://ocaml.org/">a syntax of OCaml</a>, Reason can compile to fast bytecode on most OSs,
-                and has deep roots in systems programming. You can write rock-solid APIs,
+                As <a href="https://ocaml.org/" target="_blank">a syntax of OCaml</a>, Reason can compile to fast
+                bytecode on most OSs, and has deep roots in systems programming. You can write rock-solid APIs,
                 libraries and command line applications in Reason.
               </p>
             </Grid.Column>
