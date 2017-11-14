@@ -2,14 +2,19 @@
 title: {{title}}
 createdDate: "{{createdDate}}"
 updatedDate: "{{createdDate}}"
-author: {{author}}{{tags}}
-image: welcoming.png
+author: "{{author}}"{{tags}}
+image: default.jpg
 draft: {{draft}}
 ---
 
-My awesome article
+Reason step / post / tutorial coming here soon ... please edit
+[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/{{createdDate}}--{{dashCase title}}/index.md)!
+
 
 ## TODO
 
--   [ ] Replace image
+-   [ ] Replace default.jpg image for this step
 -   [ ] Write an awesome article
+-   [ ] Remove these todos
+-   [ ] `git add ./data/steps/{{createdDate}}--{{dashCase title}}; git commit -m "Added {{title}} step"`
+-   [ ] PR to [gradus-reason](https://github.com/codekiln/gradus-reason)

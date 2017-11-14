@@ -10,7 +10,9 @@
     2.  clone your fork
     3.  `yarn install`
     4.  add your info to `data/authors.json`
-    5.  call `yarn generate`
+    5.  call `yarn generate` and select new Reason step / post
+    6.  write your article
+    7.  PR
 
 To avoid any boring copy/past, this starter-kit have many generators to permit simple bootstrap of current file pattern (eg. components/pages/blog posts).
 

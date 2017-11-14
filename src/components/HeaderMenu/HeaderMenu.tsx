@@ -22,6 +22,8 @@ export const HeaderMenu = ({items, pathname, Link, inverted, dispatch}: HeaderMe
       {items.map((item) => {
         const prefixedItemPath = withPrefix(item.path);
         const active = (item.exact) ? pathname === prefixedItemPath : pathname.startsWith(prefixedItemPath);
+        console.log(`menu item path ${prefixedItemPath} is active? ${active}.
+        pathname: ${pathname}, item.path: ${item.path}`, item, pathname);
         return <Menu.Item
           as={Link}
           className="mobile hidden"
