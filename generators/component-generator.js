@@ -38,7 +38,7 @@ const propsPrompts = [];
 
 module.exports = plop => {
   plop.addHelper('propsHelper', text => `{${text}}`);
-  plop.setGenerator('component', {
+  plop.setGenerator('component (new component to use in a page - rare!)', {
     prompts: [
       {
         type: 'input',

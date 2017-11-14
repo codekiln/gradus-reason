@@ -1,7 +1,7 @@
 const {inputRequired} = require('./utils');
 
 module.exports = plop => {
-  plop.setGenerator('page', {
+  plop.setGenerator('page (new top level menu item - rare!)', {
     prompts: [
       {
         type: 'input',

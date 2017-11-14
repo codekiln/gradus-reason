@@ -11,7 +11,7 @@ function normalizeTag(tag) {
 }
 
 module.exports = plop => {
-  plop.setGenerator('Reason step / tutorial / post', {
+  plop.setGenerator('Reason step / tutorial / post (probably what you want)', {
     prompts: [
       {
         type: 'input',
