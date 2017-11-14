@@ -21,9 +21,14 @@ export const HeaderMenu = ({items, pathname, Link, inverted, dispatch}: HeaderMe
       </Menu.Item>
       {items.map((item) => {
         const prefixedItemPath = withPrefix(item.path);
-        const active = (item.exact) ? pathname === prefixedItemPath : pathname.startsWith(prefixedItemPath);
-        console.log(`menu item path ${prefixedItemPath} is active? ${active}.
-        pathname: ${pathname}, item.path: ${item.path}`, item, pathname);
+        const usingPrefixing = prefixedItemPath !== item.path;
+        const active = (usingPrefixing)
+          ? (item.exact)
+            ? pathname === prefixedItemPath : pathname.startsWith(prefixedItemPath)
+          : (item.exact)
+            ? pathname === item.path : pathname.startsWith(item.path);
+        console.log(`\nwhile processing pathname ${pathname}, considering menu item path ${item.path}.
+        Should it be active? ${active}. In this run, are we using prefixing? ${usingPrefixing}.`);
         return <Menu.Item
           as={Link}
           className="mobile hidden"
