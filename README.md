@@ -14,10 +14,6 @@
     6.  write your article
     7.  PR
 
-To avoid any boring copy/past, this starter-kit have many generators to permit simple bootstrap of current file pattern (eg. components/pages/blog posts).
-
-You can add/delete/modify any generators into /generators folder.
-
 ## Colophon
 
--   Created with [Gatsby 1.0](https://www.gatsbyjs.org/) using @fabien0102's excellent [gatsby starter](https://github.com/fabien0102/gatsby-starter)
+-   Created with [Gatsby 1.0](https://www.gatsbyjs.org/) adapted from @fabien0102's excellent [gatsby starter](https://github.com/fabien0102/gatsby-starter)
