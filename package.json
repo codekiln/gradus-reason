@@ -36,7 +36,7 @@
     "change-case": "^3.0.1",
     "codeclimate-test-reporter": "^0.4.1",
     "gatsby": "latest",
-    "gatsby-link": "latest",
+    "gatsby-link": "^1.6.28",
     "gatsby-plugin-glamor": "latest",
     "gatsby-plugin-google-analytics": "latest",
     "gatsby-plugin-manifest": "latest",

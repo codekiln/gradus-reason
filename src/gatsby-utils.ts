@@ -1,9 +1,7 @@
+import {withPrefix as withPrefixOrig} from "gatsby-link";
 
 export function withPrefix(path: string): string {
-  if (typeof __PREFIX_PATHS__ !== "undefined" && __PREFIX_PATHS__) {
-    return __PATH_PREFIX__ + path;
-  }
-  return path;
+  return withPrefixOrig(path);
 }
 
 export function getPrefixedSrcSet(srcSet: string): string {

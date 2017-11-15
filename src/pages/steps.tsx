@@ -39,7 +39,7 @@ export default (props: BlogProps) => {
           <Comment.Group>
             <Comment>
               <Image size="tiny" shape="circular" inline>
-                <img src={avatar.responsiveResolution.src}
+                <img src={withPrefix(avatar.responsiveResolution.src)}
                      srcSet={getPrefixedSrcSet(avatar.responsiveResolution.srcSet)}/>
               </Image>
               <Comment.Content>

@@ -23,10 +23,11 @@ export default (props: BlogPostProps) => {
     .map(({ node }) => {
       const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
       const recentCover = node.frontmatter.image.children[0] as ImageSharp;
-      const avatarImage = (<Image inline spaced="right">
-        <img src={withPrefix(recentAvatar.responsiveResolution.src)}
-          srcSet={getPrefixedSrcSet(recentAvatar.responsiveResolution.srcSet)}/>
-      </Image>);
+      const avatarImage = (
+        <Image inline spaced="right">
+          <img src={withPrefix(recentAvatar.responsiveResolution.src)}
+            srcSet={getPrefixedSrcSet(recentAvatar.responsiveResolution.srcSet)}/>
+        </Image>);
       const extra = (
         <Comment.Group>
           <Comment>
@@ -43,10 +44,11 @@ export default (props: BlogPostProps) => {
         </Comment.Group>
       );
 
-      const cardImage = (<Image>
-        <img src={withPrefix(recentCover.responsiveResolution.src)}
-          srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}/>
-      </Image>);
+      const cardImage = (
+        <Image>
+          <img src={withPrefix(recentCover.responsiveResolution.src)}
+            srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}/>
+        </Image>);
       return (
         <div key={node.fields.slug} style={{paddingBottom: "1em"}}>
           <Card as={Link}

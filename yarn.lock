@@ -5077,9 +5077,9 @@ gatsby-1-config-css-modules@^1.0.4:
   dependencies:
     babel-runtime "^6.26.0"
 
-gatsby-link@latest:
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-1.6.17.tgz#4182d608798b72fd4ec716f118c4d1f649b214bb"
+gatsby-link@^1.6.28:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-1.6.28.tgz#12b799aa12663ae22f626195ab258e0ee5dddc9c"
   dependencies:
     babel-runtime "^6.26.0"
     prop-types "^15.5.8"
@@ -12916,8 +12916,8 @@ typescript@2.5.3, typescript@^2.2.1:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.3.tgz#df3dcdc38f3beb800d4bc322646b04a3f6ca7f0d"
 
 ua-parser-js@^0.7.9:
-  version "0.7.14"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.14.tgz#110d53fa4c3f326c121292bbeac904d2e03387ca"
+  version "0.7.17"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.17.tgz#e9ec5f9498b9ec910e7ae3ac626a805c4d09ecac"
 
 uglify-js@^2.6, uglify-js@^2.6.1, uglify-js@^2.8.29:
   version "2.8.29"

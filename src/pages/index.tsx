@@ -88,9 +88,9 @@ export default (props: IndexPageProps) =>
     </Segment>
 
     {/* Why Gradus? */}
-    <Segment raised vertical centered clearing className="stripe feature">
+    <Segment raised vertical clearing className="stripe feature">
       <Container>
-        <Header as="h3" centered>About <em>Gradus Reason</em></Header>
+        <Header as="h3">About <em>Gradus Reason</em></Header>
         <Card.Group stackable itemsPerRow="3">
           <Card>
             <Card.Content>
