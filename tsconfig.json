@@ -6,7 +6,7 @@
         "module": "commonjs",
         "target": "esnext",
         "jsx": "react",
-        "lib": ["dom", "esnext"]
+        "lib": ["webworker", "dom", "esnext"]
     },
     "include": [
         "./src/**/*"
