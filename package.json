@@ -1,6 +1,7 @@
 {
   "name": "gradus-reasonml",
   "version": "1.0.0",
+  "private": true,
   "description": "Steps to learning Reason / OCaml",
   "author": "Myer Nore <ptr.nore@gmail.com>",
   "license": "MIT",
@@ -22,7 +23,9 @@
     "precommit": "lint-staged",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook:build": "build-storybook -c .storybook -o public/docs",
-    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info"
+    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info",
+    "lernawatch": "lerna run watch --no-sort --stream --concurrency 999",
+    "lernabootstrap": "lerna bootstrap"
   },
   "dependencies": {
     "@types/lodash": "^4.14.63",
@@ -32,9 +35,11 @@
     "@types/react-redux": "^5.0.9",
     "@types/react-router": "^4.0.14",
     "@types/react-router-dom": "^4.0.8",
-    "babel-eslint": "^7.2.1",
+    "babel-eslint": "^7.2.3",
+    "brace": "^0.10.0",
     "change-case": "^3.0.1",
     "codeclimate-test-reporter": "^0.4.1",
+    "codemirror": "^5.31.0",
     "gatsby": "latest",
     "gatsby-link": "^1.6.28",
     "gatsby-plugin-glamor": "latest",
@@ -55,8 +60,10 @@
     "gray-matter": "^2.1.1",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
+    "react-ace": "^5.7.0",
     "react-dom": "^16.0.0",
     "react-helmet": "5.0.3",
+    "react-html-parser": "^2.0.1",
     "react-redux": "^5.0.6",
     "redux-devtools-extension": "^2.13.2",
     "semantic-ui-react": "^0.74.2",
@@ -80,6 +87,21 @@
     "@types/storybook__addon-options": "^3.2.0",
     "@types/storybook__react": "^3.0.5",
     "@types/webpack-env": "^1.13.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "cross-env": "^5.0.5",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint-config-xo-react": "0.11.1",
@@ -89,6 +111,7 @@
     "gh-pages": "^1.0.0",
     "husky": "0.13.3",
     "jest": "19.0.2",
+    "lerna": "^2.5.1",
     "lint-staged": "3.4.0",
     "mkdirp": "^0.5.1",
     "plop": "^1.7.4",
@@ -167,5 +190,8 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
-  }
+  },
+  "workspaces": [
+    "plugins/*"
+  ]
 }

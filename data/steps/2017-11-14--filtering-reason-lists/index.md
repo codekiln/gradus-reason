@@ -19,3 +19,10 @@ Reason step / post / tutorial coming here soon ... please edit
 -   [ ] Remove these todos
 -   [ ] `git add ./data/steps/2017-11-14--filtering-reason-lists; git commit -m "Added Filtering Reason Lists step"`
 -   [ ] PR to [gradus-reason](https://github.com/codekiln/gradus-reason)
+
+```reason
+let myStrs = ["", "a", "ab", "abc", "abcd", "abcde"];
+myStrs 
+	|> List.filter((mystr) => String.length(mystr) > 2) 
+	|> List.iter(Js.log)
+```

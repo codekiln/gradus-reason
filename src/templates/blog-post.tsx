@@ -4,6 +4,7 @@ import { Header, Container, Segment, Icon, Label, Button, Grid, Card, Image, Ite
 import { MarkdownRemark, ImageSharp, MarkdownRemarkConnection } from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import {getPrefixedSrcSet, withPrefix} from "../gatsby-utils";
+import Html from "../components/Html/Html";
 
 interface BlogPostProps {
   data: {
@@ -13,6 +14,7 @@ interface BlogPostProps {
 }
 
 export default (props: BlogPostProps) => {
+  console.log(props.data.post);
   const { frontmatter, html, timeToRead } = props.data.post;
   const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 
@@ -87,11 +89,9 @@ export default (props: BlogPostProps) => {
           />
         </Image>
       <Segment vertical
-        style={{ border: "none" }}
-        dangerouslySetInnerHTML={{
-          __html: html,
-        }}
-      />
+        style={{ border: "none" }}>
+        <Html content={html}/>
+      </Segment>
       <Segment vertical>
         {tags}
       </Segment>
