@@ -178,6 +178,10 @@
   version "0.22.2"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.2.tgz#539625874bc856086ad491c2fdc9b10c05ae308e"
 
+"@types/codemirror@^0.0.51":
+  version "0.0.51"
+  resolved "https://registry.yarnpkg.com/@types/codemirror/-/codemirror-0.0.51.tgz#2755675a67572d2339bdff2c73a7bc5b9003deff"
+
 "@types/enzyme@^2.8.9":
   version "2.8.9"
   resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-2.8.9.tgz#17db10bb223a2c81ed8ac6ba6fdba52d2639d8d8"
@@ -2843,9 +2847,9 @@ codeclimate-test-reporter@^0.4.1:
     lcov-parse "0.0.10"
     request "~2.74.0"
 
-codemirror@^5.31.0:
-  version "5.31.0"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.31.0.tgz#ecf3d057eb74174147066bfc7c5f37b4c4e07df2"
+codemirror@^5.32.0:
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.32.0.tgz#cb6ff5d8ef36d0b10f031130e2d9ebeee92c902e"
 
 coffee-script@^1.12.4:
   version "1.12.7"

@@ -11,12 +11,10 @@ const options = {
   // tslint:disable only-arrow-functions
   transform: function transform(node, index) {
 
-    if (node.type === "tag" && node.name === "code" && node.parent.attribs.class === "language-reason") {
-      console.log("found node of type code: ", node);
-      const onUpdateCode = (code) => {console.log("onUpdateCode", code); };
-      return <Editor key={index} code={node.children[0].data} onUpdateCode={onUpdateCode}/>;
+    if (node.type === "tag" && node.name === "pre" && node.attribs.class === "language-reason") {
+      return <Editor key={index} code={node.children[0].children[0].data}
+                     onUpdateCode={(code) => {console.log("onUpdateCode", code); }} />;
     }
-
   },
 };
 

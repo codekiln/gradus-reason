@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "gatsby-link";
-import { Header, Container, Segment, Icon, Label, Button, Grid, Card, Image, Item, Comment } from "semantic-ui-react";
-import { MarkdownRemark, ImageSharp, MarkdownRemarkConnection } from "../graphql-types";
+import {Card, Comment, Container, Grid, Header, Image, Item, Label, Segment} from "semantic-ui-react";
+import {ImageSharp, MarkdownRemark, MarkdownRemarkConnection} from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import {getPrefixedSrcSet, withPrefix} from "../gatsby-utils";
 import Html from "../components/Html/Html";
@@ -15,30 +15,30 @@ interface BlogPostProps {
 
 export default (props: BlogPostProps) => {
   console.log(props.data.post);
-  const { frontmatter, html, timeToRead } = props.data.post;
+  const {frontmatter, html, timeToRead} = props.data.post;
   const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 
   const tags = props.data.post.frontmatter.tags
     .map((tag) => <Label key={tag}><Link to={`/steps/tags/${tag}/`}>{tag}</Link></Label>);
 
   const recents = props.data.recents.edges
-    .map(({ node }) => {
+    .map(({node}) => {
       const recentAvatar = node.frontmatter.author.avatar.children[0] as ImageSharp;
       const recentCover = node.frontmatter.image.children[0] as ImageSharp;
       const avatarImage = (
         <Image inline spaced="right">
           <img src={withPrefix(recentAvatar.responsiveResolution.src)}
-            srcSet={getPrefixedSrcSet(recentAvatar.responsiveResolution.srcSet)}/>
+               srcSet={getPrefixedSrcSet(recentAvatar.responsiveResolution.srcSet)}/>
         </Image>);
       const extra = (
         <Comment.Group>
           <Comment>
-              {avatarImage}
+            {avatarImage}
             <Comment.Content>
-              <Comment.Author style={{ fontWeight: 400 }}>
+              <Comment.Author style={{fontWeight: 400}}>
                 {frontmatter.author.id}
               </Comment.Author>
-              <Comment.Metadata style={{ margin: 0 }}>
+              <Comment.Metadata style={{margin: 0}}>
                 {timeToRead} min read
               </Comment.Metadata>
             </Comment.Content>
@@ -49,15 +49,15 @@ export default (props: BlogPostProps) => {
       const cardImage = (
         <Image>
           <img src={withPrefix(recentCover.responsiveResolution.src)}
-            srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}/>
+               srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}/>
         </Image>);
       return (
         <div key={node.fields.slug} style={{paddingBottom: "1em"}}>
           <Card as={Link}
-            to={node.fields.slug}
-            image={cardImage}
-            header={node.frontmatter.title}
-            extra={extra}
+                to={node.fields.slug}
+                image={cardImage}
+                header={node.frontmatter.title}
+                extra={extra}
           />
         </div>
       );
@@ -65,11 +65,11 @@ export default (props: BlogPostProps) => {
 
   const recentCover = frontmatter.image.children[0] as ImageSharp;
   const itemImg = (<img src={withPrefix(avatar.responsiveResolution.src)}
-                  srcSet={getPrefixedSrcSet(avatar.responsiveResolution.srcSet)}/> );
+                        srcSet={getPrefixedSrcSet(avatar.responsiveResolution.srcSet)}/> );
   return (
     <Container>
-      <BlogTitle />
-      <Segment vertical style={{ border: "none" }}>
+      <BlogTitle/>
+      <Segment vertical style={{border: "none"}}>
         <Item.Group>
           <Item>
             <Item.Image size="tiny" shape="circular">{itemImg}</Item.Image>
@@ -82,14 +82,14 @@ export default (props: BlogPostProps) => {
         </Item.Group>
         <Header as="h1">{frontmatter.title}</Header>
       </Segment>
-        <Image fluid>
-          <img
-            src={withPrefix(recentCover.responsiveResolution.src)}
-            srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}
-          />
-        </Image>
+      <Image fluid>
+        <img
+          src={withPrefix(recentCover.responsiveResolution.src)}
+          srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}
+        />
+      </Image>
       <Segment vertical
-        style={{ border: "none" }}>
+               style={{border: "none"}}>
         <Html content={html}/>
       </Segment>
       <Segment vertical>
@@ -105,88 +105,88 @@ export default (props: BlogPostProps) => {
 };
 
 export const pageQuery = graphql`
-  query TemplateBlogPost($slug: String!) {
-  post: markdownRemark(fields: {slug: {eq: $slug}}) {
-    html
-    excerpt
-    timeToRead
-    fields {
-      slug
-    }
-    frontmatter {
-      tags
-      author {
-        id
-        bio
-        twitter
-        avatar {
-          children {
-            ... on ImageSharp {
-              responsiveResolution(width: 80, height: 80, quality: 100) {
-                src
-                srcSet
-              }
+    query TemplateBlogPost($slug: String!) {
+        post: markdownRemark(fields: {slug: {eq: $slug}}) {
+            html
+            excerpt
+            timeToRead
+            fields {
+                slug
             }
-          }
-        }
-      }
-      title
-      updatedDate(formatString: "MMM D, YYYY")
-      image {
-        children {
-          ... on ImageSharp {
-            responsiveResolution(width: 900, height: 300, quality: 100) {
-              src
-              srcSet
-            }
-          }
-        }
-      }
-    }
-  }
-  recents: allMarkdownRemark(
-    filter: {
-      fields: {slug: {ne: $slug}}
-      frontmatter: {draft: {ne: true}},
-      fileAbsolutePath: {regex: "/steps/"},
-    },
-    sort: {order: DESC, fields: [frontmatter___updatedDate]},
-    limit: 4
-  ) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        timeToRead
-        frontmatter {
-          title
-          image {
-            children {
-              ... on ImageSharp {
-                responsiveResolution(width: 300, height: 100) {
-                  src
-                  srcSet
+            frontmatter {
+                tags
+                author {
+                    id
+                    bio
+                    twitter
+                    avatar {
+                        children {
+                            ... on ImageSharp {
+                                responsiveResolution(width: 80, height: 80, quality: 100) {
+                                    src
+                                    srcSet
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            }
-          }
-          author {
-            id
-            avatar {
-              children {
-                ... on ImageSharp {
-                  responsiveResolution(width: 36, height: 36) {
-                    src
-                    srcSet
-                  }
+                title
+                updatedDate(formatString: "MMM D, YYYY")
+                image {
+                    children {
+                        ... on ImageSharp {
+                            responsiveResolution(width: 900, height: 300, quality: 100) {
+                                src
+                                srcSet
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         }
-      }
+        recents: allMarkdownRemark(
+            filter: {
+                fields: {slug: {ne: $slug}}
+                frontmatter: {draft: {ne: true}},
+                fileAbsolutePath: {regex: "/steps/"},
+            },
+            sort: {order: DESC, fields: [frontmatter___updatedDate]},
+            limit: 4
+        ) {
+            edges {
+                node {
+                    fields {
+                        slug
+                    }
+                    timeToRead
+                    frontmatter {
+                        title
+                        image {
+                            children {
+                                ... on ImageSharp {
+                                    responsiveResolution(width: 300, height: 100) {
+                                        src
+                                        srcSet
+                                    }
+                                }
+                            }
+                        }
+                        author {
+                            id
+                            avatar {
+                                children {
+                                    ... on ImageSharp {
+                                        responsiveResolution(width: 36, height: 36) {
+                                            src
+                                            srcSet
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
-}
 `;

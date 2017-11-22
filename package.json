@@ -39,7 +39,7 @@
     "brace": "^0.10.0",
     "change-case": "^3.0.1",
     "codeclimate-test-reporter": "^0.4.1",
-    "codemirror": "^5.31.0",
+    "codemirror": "^5.32.0",
     "gatsby": "latest",
     "gatsby-link": "^1.6.28",
     "gatsby-plugin-glamor": "latest",
@@ -77,6 +77,7 @@
     "@storybook/addon-notes": "^3.2.10",
     "@storybook/addon-options": "^3.2.10",
     "@storybook/react": "^3.2.11",
+    "@types/codemirror": "^0.0.51",
     "@types/enzyme": "^2.8.9",
     "@types/jest": "^19.2.2",
     "@types/node": "^7.0.15",
@@ -158,11 +159,11 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "src/**/*.{ts,tsx}": [
       "tslint --fix",
       "git add"
     ],
-    "*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "xo --fix",
       "git add"
     ],

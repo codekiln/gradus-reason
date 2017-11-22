@@ -102,3 +102,7 @@ pre {
   border-radius: 0.3em;
   background: #272822;
 }
+
+div.CodeMirror {
+  height: auto;
+}

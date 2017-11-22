@@ -1,41 +1,30 @@
 import * as React from "react";
-import * as ace from "brace";
-// import 'brace/mode/javascript';
-// import 'brace/theme/monokai';
-import AceEditor from "react-ace";
+import CodeMirror, {CodeMirrorOptions} from "./CodeMirror/CodeMirror";
 
 interface SidebarMenuProps extends React.HTMLProps<HTMLDivElement> {
   code: string;
   onUpdateCode: (code: string) => void;
+  options?: CodeMirrorOptions;
 }
 
 export default class Editor extends React.PureComponent<SidebarMenuProps, null> {
 
-  onEditorLoad(editor) {
-    editor.session.setUseWorker(false);
-    editor.session.setUseWrapMode(true);
+  static getEditor(code, onUpdateCode, editorOptions) {
+    return (typeof navigator !== "undefined") ? (<CodeMirror
+      value={code}
+      options={editorOptions}
+      onEditorChange={onUpdateCode}
+    />) : (<code>{code}</code>);
   }
 
   render() {
-    const { code, onUpdateCode } = this.props;
+    const {code, onUpdateCode, options} = this.props;
 
-    const editorProps = {
-      $blockScrolling: Infinity,
-      wrap: true,
-    };
+    const codeblock = Editor.getEditor(code, onUpdateCode, options);
 
     return (
       <div className="reason-editor">
-        <AceEditor mode="javascript"
-                   theme="monokai"
-                   name="HTML_EDITOR"
-                   value={code}
-                   width="100%"
-                   height="6em"
-                   onChange={(value) => onUpdateCode(value)}
-                   onLoad={(editor) => this.onEditorLoad(editor)}
-                   editorProps={editorProps}
-        />
+        {codeblock}
       </div>
     );
   }
