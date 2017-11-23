@@ -14,7 +14,6 @@ interface BlogPostProps {
 }
 
 export default (props: BlogPostProps) => {
-  console.log(props.data.post);
   const {frontmatter, html, timeToRead} = props.data.post;
   const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 

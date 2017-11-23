@@ -10,21 +10,24 @@ interface SidebarMenuProps extends React.HTMLProps<HTMLDivElement> {
 export default class Editor extends React.PureComponent<SidebarMenuProps, null> {
 
   static getEditor(code, onUpdateCode, editorOptions) {
-    return (typeof navigator !== "undefined") ? (<CodeMirror
-      value={code}
-      options={editorOptions}
-      onEditorChange={onUpdateCode}
-    />) : (<code>{code}</code>);
+    if (typeof navigator !== "undefined") {
+      return (<CodeMirror
+        value={code}
+        options={editorOptions}
+        onEditorChange={onUpdateCode}
+      />);
+    }
+    return (<code>{code}</code>);
   }
 
   render() {
     const {code, onUpdateCode, options} = this.props;
 
-    const codeblock = Editor.getEditor(code, onUpdateCode, options);
+    const codeBlock = Editor.getEditor(code, onUpdateCode, options);
 
     return (
       <div className="reason-editor">
-        {codeblock}
+        {codeBlock}
       </div>
     );
   }

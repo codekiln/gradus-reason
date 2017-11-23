@@ -64,9 +64,11 @@ export default (props: IndexPageProps) =>
                 OCaml Rigor
               </Header>
               <p>
-                As <a href="https://ocaml.org/" target="_blank">a syntax of OCaml</a>, Reason can compile to fast
-                bytecode on most OSs, and has deep roots in systems programming. You can write rock-solid APIs,
-                libraries and command line applications in Reason.
+                Reason <a href="https://ocaml.org/" target="_blank">is OCaml</a>. <a href="https://goo.gl/qxQCct">
+                It compiles to a fast native executable</a>, and yet (unlike C or C++) it is type-safe and
+                garbage collected, making it possible to write provably correct code. Using
+                <a href="https://mirage.io/">MiragOS</a> you can even compile your program down to a minimal
+                operating system that runs on bare metal.
               </p>
             </Grid.Column>
             <Grid.Column width="7">

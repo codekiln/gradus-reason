@@ -3,7 +3,7 @@
 const visit = require(`unist-util-visit`);
 
 module.exports = ({markdownAST}, {classPrefix = `language-`} = {}) => {
-  console.log('inside gatsby-remark-reason, markdownAST is: ', JSON.stringify(markdownAST, null, 4));
+  // console.log('inside gatsby-remark-reason, markdownAST is: ', JSON.stringify(markdownAST, null, 4));
   visit(markdownAST, `code`, node => {
     let language = node.lang;
     let languageName = `none`;
@@ -12,8 +12,8 @@ module.exports = ({markdownAST}, {classPrefix = `language-`} = {}) => {
       languageName = language;
     }
     if (languageName === `reason`) {
-      console.log('gatsby-remark-reason found reason node:');
-      console.log(node);
+      // console.log('gatsby-remark-reason found reason node:');
+      // console.log(node);
       // Replace the node with the markup we need to make
       // 100% width highlighted code lines work
       node.type = `html`;
