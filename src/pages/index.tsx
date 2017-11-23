@@ -36,7 +36,7 @@ export default (props: IndexPageProps) =>
     {/* About the site */}
     <Segment vertical className="stripe" inverted>
       <Container text>
-        <Grid stackable verticalAlign="middle" className="container">
+        <Grid stackable verticalAlign="top" className="container">
           <Grid.Row width="8">
             <Header inverted>
               <Image inline src={reasonIcon}
