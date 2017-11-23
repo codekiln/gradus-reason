@@ -64,8 +64,8 @@ export default (props: IndexPageProps) =>
                 OCaml Rigor
               </Header>
               <p>
-                Reason <a href="https://ocaml.org/" target="_blank">is OCaml</a>. <a href="https://goo.gl/qxQCct">
-                It compiles to a fast native executable</a>, and yet (unlike C or C++) it is type-safe and
+                Reason <a href="https://ocaml.org/" target="_blank">is OCaml</a>. It <a href="https://goo.gl/qxQCct">
+                compiles to a fast native executable</a>, and yet (unlike C or C++) it is type-safe and
                 garbage collected, making it possible to write provably correct code.
                 Using <a href="https://mirage.io/">MiragOS</a> you can even compile your program down to a minimal
                 operating system that runs on bare metal.
