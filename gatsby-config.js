@@ -28,7 +28,7 @@ module.exports = {
             }
           },
           `gatsby-remark-reason`,
-          // `gatsby-remark-prismjs`,
+          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`
         ]
