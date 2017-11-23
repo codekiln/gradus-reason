@@ -1,5 +1,10 @@
 import * as React from "react";
 import CodeMirror, {CodeMirrorOptions} from "./CodeMirror/CodeMirror";
+import Segment from "semantic-ui-react/dist/commonjs/elements/Segment/Segment";
+import Label from "semantic-ui-react/dist/commonjs/elements/Label/Label";
+import "codemirror/theme/ambiance.css";
+import Icon from "semantic-ui-react/dist/commonjs/elements/Icon/Icon";
+import Divider from "semantic-ui-react/dist/commonjs/elements/Divider/Divider";
 
 interface SidebarMenuProps extends React.HTMLProps<HTMLDivElement> {
   code: string;
@@ -23,11 +28,19 @@ export default class Editor extends React.PureComponent<SidebarMenuProps, null> 
   render() {
     const {code, onUpdateCode, options} = this.props;
 
-    const codeBlock = Editor.getEditor(code, onUpdateCode, options);
-
     return (
       <div className="reason-editor">
-        {codeBlock}
+        <Segment.Group>
+          <Segment>
+            <Label color="red" ribbon>Reason</Label>
+            {Editor.getEditor(code, onUpdateCode, options)}
+            <Divider hidden />
+            <Label as="a" color="brown" ribbon="right"><Icon fitted name="refresh"/> Result</Label>
+            {Editor.getEditor(code, onUpdateCode, {
+              ...options, lineNumbers: false, readOnly: true, theme: "ambiance",
+            })}
+          </Segment>
+        </Segment.Group>
       </div>
     );
   }
