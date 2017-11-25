@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 import { get } from "lodash";
+/* tslint:disable */
 
 export interface StoreState {
   isSidebarVisible: boolean;

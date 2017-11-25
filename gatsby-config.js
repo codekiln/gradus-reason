@@ -27,6 +27,7 @@ module.exports = {
               backgroundColor: `#f7f0eb`
             }
           },
+          `gatsby-remark-reason`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`

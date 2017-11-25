@@ -12,6 +12,16 @@ draft: false
 Reason step / post / tutorial coming here soon ... please edit
 [here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-11-14--filtering-reason-lists/index.md)!
 
+It's now possible to get an editor in the blog post. To get reason syntax highlighting, just 
+use a fenced code block marked with `reason`:
+
+```reason
+let myStrs = ["", "a", "ab", "abc", "abcd", "abcde"];
+myStrs 
+	|> List.filter((mystr) => String.length(mystr) > 2) 
+	|> List.iter(Js.log)
+```
+
 ## TODO
 
 -   [ ] Replace default.jpg image for this step

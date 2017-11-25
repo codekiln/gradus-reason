@@ -1,0 +1,26 @@
+{
+  "name": "gatsby-remark-reason",
+  "description": "Adds syntax realtime Reason OCaml editing to markdown posts",
+  "version": "0.0.13",
+  "author": "Myer Nore",
+  "dependencies": {
+    "unist-util-visit": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "cross-env": "^5.0.5"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "reason",
+    "remark"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore __tests__",
+    "watch": "babel -w src --out-dir . --ignore __tests__",
+    "prepublish": "cross-env NODE_ENV=production npm run build"
+  }
+}

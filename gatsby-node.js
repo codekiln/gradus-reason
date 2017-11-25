@@ -118,6 +118,12 @@ const extractQueryPlugin = path.resolve(
 );
 
 exports.modifyWebpackConfig = ({config, stage}) => {
+  if (stage === "build-html") {
+    config.loader('null', {
+      test: /CodeMirror/,
+      loader: 'null-loader'
+    })
+  }
   if (stage === 'build-javascript') {
     // Temporary workaround.
     // Here we override the Webpack plugin during the `build-javascript` stage to make everything
