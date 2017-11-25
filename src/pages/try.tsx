@@ -278,15 +278,13 @@ export default class Try extends React.Component<ITryProps, ITryState> {
     reason: "/* loading */",
   };
 
-  err = "";
-
   outputOverloaded = false;
 
   evalWorker: Worker;
 
   errorTimerId: NodeJS.Timer;
 
-    tryCompiling: DebounceCallback = debounce((reason: string, ocaml: string) => {
+  tryCompiling: DebounceCallback = debounce((reason: string, ocaml: string) => {
     try {
       const [res, warning] = this.compile(ocaml);
       if (res.js_code) {
