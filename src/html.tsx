@@ -50,8 +50,8 @@ module.exports = (props: HtmlProps) => {
       {head.meta.toComponent()}
       {head.link.toComponent()}
       {css}
-      <script async src={withoutPrefix("/bs.js")} />
-      <script async src={withoutPrefix("/refmt.js")} />
+      <script async src={withPrefix("/bs.js")} />
+      <script async src={withPrefix("/refmt.js")} />
     </head>
     <body>
     <div

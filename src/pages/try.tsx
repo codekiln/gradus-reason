@@ -526,7 +526,7 @@ export default class Try extends React.Component<ITryProps, ITryState> {
                     this.updateReason(value as string);
                   };
                   return (
-                    <Dropdown.Item onClick={cb} value={example.code}>
+                    <Dropdown.Item key={example.name} onClick={cb} value={example.code}>
                       {example.name}
                     </Dropdown.Item>
                   );
