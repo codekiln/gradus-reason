@@ -7,6 +7,7 @@ import Divider from "semantic-ui-react/dist/commonjs/elements/Divider/Divider";
 import Dropdown from "semantic-ui-react/dist/commonjs/modules/Dropdown/Dropdown";
 import Menu from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
 import Button from "semantic-ui-react/dist/commonjs/elements/Button/Button";
+import {withPrefix} from "../gatsby-utils";
 
 const examples = [{
   name: "Tree sum",
@@ -349,7 +350,7 @@ export default class Try extends React.Component<ITryProps, ITryState> {
   }
 
   initEvalWorker = () => {
-    this.evalWorker = new Worker("/evalWorker.js");
+    this.evalWorker = new Worker(withPrefix("/evalWorker.js"));
     this.evalWorker.onmessage = ({data}: MessageEvent) => {
       if (data.type === "end") {
         clearTimeout(data.contents as number);
