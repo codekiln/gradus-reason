@@ -25,16 +25,19 @@ interface CodeMirrorProps extends React.HTMLProps<HTMLDivElement> {
 const langToOptions = {
   javascript: {
     gutters: ["gutter-js"],
+    lineNumbers: false,
     mode: "rust",
     readOnly: "nocursor",
   },
   ocaml: {
     gutters: ["gutter-ocaml"],
+    lineNumbers: false,
     mode: "mllike",
     readOnly: "nocursor",
   },
   reason: {
     gutters: ["gutter-reason"],
+    lineNumbers: false,
     mode: "javascript",
   },
   result: {

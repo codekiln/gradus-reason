@@ -144,3 +144,15 @@ div.CodeMirror {
 .ocaml-code {
   margin-top: 10px;
 }
+
+img.label-logo {
+  height: 1.75em !important;
+}
+
+.ui.mini.image {
+  height: 1.75em !important;
+}
+
+a.brown.ribbon.label {
+  margin-bottom: 5px !important;
+}
