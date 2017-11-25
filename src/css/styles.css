@@ -107,3 +107,40 @@ div.CodeMirror {
   height: auto;
   width: auto;
 }
+
+.gutter-reason {
+  width: 40px;
+  background-image: url("../images/icon_75.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+.gutter-ocaml {
+  width: 40px;
+  background-image: url("../images/ocaml.svg");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+.gutter-js {
+  width: 40px;
+  background-image: url("../images/js_logo.svg");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+.gutter-result {
+  width: 20px;
+}
+
+.code-results {
+  margin-top: 10px;
+}
+
+.js-code {
+  margin-top: 10px;
+}
+
+.ocaml-code {
+  margin-top: 10px;
+}

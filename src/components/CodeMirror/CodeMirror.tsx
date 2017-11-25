@@ -6,32 +6,66 @@ import "codemirror/theme/monokai.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/mllike/mllike";
 import "codemirror/mode/rust/rust";
+import TextArea from "semantic-ui-react/dist/commonjs/addons/TextArea/TextArea";
+import {Ref} from "semantic-ui-react";
 
-export interface CodeMirrorOptions extends CodeMirrorEditor.EditorConfiguration { }
+export interface CodeMirrorOptions extends CodeMirrorEditor.EditorConfiguration {
+}
+
+export type Lang = "javascript" | "reason" | "ocaml" | "result";
 
 interface CodeMirrorProps extends React.HTMLProps<HTMLDivElement> {
   value: string;
   options?: CodeMirrorOptions;
   onEditorChange?: (value: string) => void;
   className?: string;
+  lang: Lang;
 }
+
+const langToOptions = {
+  javascript: {
+    gutters: ["gutter-js"],
+    mode: "rust",
+    readOnly: "nocursor",
+  },
+  ocaml: {
+    gutters: ["gutter-ocaml"],
+    mode: "mllike",
+    readOnly: "nocursor",
+  },
+  reason: {
+    gutters: ["gutter-reason"],
+    mode: "javascript",
+  },
+  result: {
+    gutters: ["gutter-result"],
+    lineNumbers: false,
+    mode: "javascript",
+    readOnly: "nocursor",
+    theme: "ambiance",
+  },
+};
 
 export default class CodeMirror extends React.Component<CodeMirrorProps, null> {
 
   private editor: Editor | null;
   private containerDiv: HTMLElement;
   private defaultOptions: CodeMirrorEditor.EditorConfiguration = {
+    gutters: ["my-gutter"],
     lineNumbers: true,
     mode: "rust",
     theme: "monokai",
   };
 
   componentDidMount() {
+    const langOptions = langToOptions[this.props.lang];
     const editorOptions = {
       ...this.defaultOptions,
+      ...langOptions,
       ...this.props.options,
     };
-    this.editor = CodeMirrorEditor(this.containerDiv, editorOptions);
+    this.editor = CodeMirrorEditor.fromTextArea(
+      this.containerDiv as HTMLTextAreaElement, editorOptions);
     this.editor.setValue(this.props.value);
 
     this.editor.on("change", (cm, metadata) => {
@@ -42,10 +76,21 @@ export default class CodeMirror extends React.Component<CodeMirrorProps, null> {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    const hasChanged = this.props.value !== nextProps.value
+      && nextProps.value !== this.editor.getValue();
+    if (hasChanged) {
+      this.editor.setValue(nextProps.value);
+    }
+  }
+
   render() {
-    // see also https://goenning.net/2016/11/02/strongly-typed-react-refs-with-typescript/
     return (
-      <div className={this.props.className} ref={(div) => this.containerDiv = div}/>
+      <div>
+        <Ref innerRef={(textarea) => this.containerDiv = textarea}>
+          <TextArea/>
+        </Ref>
+      </div>
     );
   }
 };

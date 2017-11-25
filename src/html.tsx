@@ -4,6 +4,7 @@
 import * as React from "react";
 import Helmet from "react-helmet";
 import * as favicon from "./favicon.png";
+import {withoutPrefix, withPrefix} from "./gatsby-utils";
 
 // Load production style
 let styles: string;
@@ -49,6 +50,8 @@ module.exports = (props: HtmlProps) => {
       {head.meta.toComponent()}
       {head.link.toComponent()}
       {css}
+      <script async src={withoutPrefix("/bs.js")} />
+      <script async src={withoutPrefix("/refmt.js")} />
     </head>
     <body>
     <div

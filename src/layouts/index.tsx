@@ -11,6 +11,7 @@ import "prismjs/themes/prism-okaidia.css";
 export const menuItems = [
   {name: "Home", path: "/", exact: true, icon: "home", inverted: true},
   {name: "Steps", path: "/steps/", exact: false, icon: "book"},
+  {name: "Try", path: "/try/", exact: false, icon: "code"},
 ];
 
 interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {

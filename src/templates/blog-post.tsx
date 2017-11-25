@@ -4,7 +4,7 @@ import {Card, Comment, Container, Grid, Header, Image, Item, Label, Segment} fro
 import {ImageSharp, MarkdownRemark, MarkdownRemarkConnection} from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import {getPrefixedSrcSet, withPrefix} from "../gatsby-utils";
-import Html from "../components/Html/Html";
+import HtmlContent from "../components/HtmlContent/HtmlContent";
 
 interface BlogPostProps {
   data: {
@@ -89,7 +89,7 @@ export default (props: BlogPostProps) => {
       </Image>
       <Segment vertical
                style={{border: "none"}}>
-        <Html content={html}/>
+        <HtmlContent content={html}/>
       </Segment>
       <Segment vertical>
         {tags}
