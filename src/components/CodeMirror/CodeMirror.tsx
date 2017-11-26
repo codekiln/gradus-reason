@@ -8,11 +8,17 @@ import "codemirror/mode/mllike/mllike";
 import "codemirror/mode/rust/rust";
 import TextArea from "semantic-ui-react/dist/commonjs/addons/TextArea/TextArea";
 import {Ref} from "semantic-ui-react";
+import Segment from "semantic-ui-react/dist/commonjs/elements/Segment/Segment";
 
 export interface CodeMirrorOptions extends CodeMirrorEditor.EditorConfiguration {
 }
 
-export type Lang = "javascript" | "reason" | "ocaml" | "result";
+export enum Lang {
+  Javascript = "javascript",
+  OCaml = "ocaml",
+  Output = "result",
+  Reason = "reason",
+}
 
 interface CodeMirrorProps extends React.HTMLProps<HTMLDivElement> {
   value: string;
@@ -89,11 +95,11 @@ export default class CodeMirror extends React.Component<CodeMirrorProps, null> {
 
   render() {
     return (
-      <div>
+      <Segment vertical basic>
         <Ref innerRef={(textarea) => this.containerDiv = textarea}>
           <TextArea/>
         </Ref>
-      </div>
+      </Segment>
     );
   }
 };

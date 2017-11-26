@@ -1,15 +1,22 @@
 import * as React from "react";
 import CodeMirror, {Lang} from "./CodeMirror/CodeMirror";
 import Segment from "semantic-ui-react/dist/commonjs/elements/Segment/Segment";
-import Label from "semantic-ui-react/dist/commonjs/elements/Label/Label";
 import "codemirror/theme/ambiance.css";
-import Icon from "semantic-ui-react/dist/commonjs/elements/Icon/Icon";
 import * as ocamlLogo from "../images/ocaml.svg";
 import * as jsLogo from "../images/js_logo.svg";
 import Image from "semantic-ui-react/dist/commonjs/elements/Image/Image";
 import Menu from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
 import {DebounceCallback, default as debounce} from "../utils/debounce";
 import {withPrefix} from "gatsby-link";
+import * as reasonLogo from "../images/icon_75.png";
+import List from "semantic-ui-react/dist/commonjs/elements/List/List";
+import {SemanticWIDTHS, Transition} from "semantic-ui-react";
+import * as consoleLogo from "../images/console_icon.svg";
+
+/**
+ * The reason editor that is embedded into blog posts
+ * @type {ReasonEditor2}
+ */
 
 const errorTimeout = 500;
 
@@ -95,6 +102,18 @@ interface CompileResult {
   js_code: string;
 }
 
+interface LangInfo {
+  code: string;
+  compileError?: CompileError | null;
+  errorOrCompileWarning?: Error;
+  image: any;
+  lang: Lang;
+  onUpdateCode?: (update: string) => void;
+  show: boolean;
+  showVarName?: string;
+  syntaxError?: SyntaxError | null;
+}
+
 export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, ReasonEditor2State> {
 
   static getEditor(code, lang: Lang, editorOptions = {}, onUpdateCode = (_: string) => {
@@ -115,6 +134,43 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
       );
     }
     return (<code>{code}</code>);
+  }
+
+  static getEditorForLang({code, lang, image, onUpdateCode}: LangInfo) {
+    if (typeof navigator !== "undefined") {
+      const localEditorOptions = {
+        gutters: [],
+      };
+      return (
+        <List.Item key={lang}>
+          <List.Content>
+            <List.Header><Image avatar src={image}/> {lang}</List.Header>
+            <CodeMirror
+              value={code}
+              options={localEditorOptions}
+              lang={lang}
+              onEditorChange={onUpdateCode}
+            />
+          </List.Content>
+        </List.Item>
+      );
+    }
+    return (<code>{code}</code>);
+  }
+
+  static getEditorsForLangs(langs: LangInfo[]) {
+    return (
+      <Transition.Group
+        as={List}
+        duration={200}
+        divided
+        size="tiny"
+        verticalAlign="middle"
+      >
+        {langs.map(ReasonEditor2.getEditorForLang)}
+      </Transition.Group>
+    );
+
   }
 
   state: ReasonEditor2State = {
@@ -178,10 +234,14 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
     });
   }, 100);
 
+  constructor(props) {
+    super(props);
+    this.getLangInfo = this.getLangInfo.bind(this);
+  }
+
   handleItemClick = (e, {name, content}) => this.setState(
     (prevState: ReasonEditor2State) => {
       const stateKey = name ? name : content;
-      console.log("caught click", e, stateKey);
       return {...prevState, [stateKey]: !prevState[stateKey]};
     },
   )
@@ -361,7 +421,8 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
     }
   }
 
-  render() {
+  getLangInfo(lang: Lang): LangInfo {
+
     const {
       reason,
       ocaml,
@@ -374,73 +435,88 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
       showOutput, showOcaml, showJs,
     } = this.state;
 
-    const reasonBlock = reason ?
-      <div className="reason-code">
-        {ReasonEditor2.getEditor(reason, "reason")}
-      </div>
-      : <code/>;
+    switch (lang) {
+      case Lang.Reason: {
+        return {
+          code: reason,
+          compileError,
+          errorOrCompileWarning: compileWarning,
+          image: reasonLogo,
+          lang: Lang.Reason,
+          onUpdateCode: this.updateReason,
+          show: true,
+          syntaxError: reasonSyntaxError,
+        };
+      }
+      case Lang.Output: {
+        return {
+          code: this.state.output.map((item, i) => formatOutput(item)).join("\n"),
+          image: consoleLogo,
+          lang: Lang.Output,
+          show: showOutput,
+          showVarName: "showOutput",
+        };
+      }
+      case Lang.OCaml: {
+        return {
+          code: ocaml,
+          image: ocamlLogo,
+          lang: Lang.OCaml,
+          show: showOcaml,
+          showVarName: "showOcaml",
+          syntaxError: ocamlSyntaxError,
+        };
+      }
+      case Lang.Javascript: {
+        return {
+          code: js,
+          errorOrCompileWarning: jsError,
+          image: jsLogo,
+          lang: Lang.Javascript,
+          show: showJs,
+          showVarName: "showJs",
+        };
+      }
+      default: {
+        return {
+          code: reason,
+          compileError,
+          image: consoleLogo,
+          lang: Lang.Output,
+          show: true,
+        };
+      }
+    }
+  }
 
-    const menuBlock = (
-      <Menu icon secondary compact size="mini">
+  render() {
 
-        <Menu.Item name="showOutput" active={showOutput} onClick={this.handleItemClick}>
-          <Icon name="terminal" size="small" bordered/>
+    const langsOnLeft = [Lang.Reason].map(this.getLangInfo);
+    const leftLangBlocks = ReasonEditor2.getEditorsForLangs(langsOnLeft);
+
+    const langsOnRight = [Lang.Output, Lang.Javascript, Lang.OCaml].map(this.getLangInfo);
+
+    const rightLangToggleMenu = langsOnRight.map(
+      ({lang, show, showVarName, image}) => (
+        <Menu.Item key={`show-${lang}`} name={showVarName}
+                   active={show} onClick={this.handleItemClick}>
+          <Image src={image} size="mini" className="label-logo"/>
         </Menu.Item>
+      ));
 
-        <Menu.Item name="showJs" active={showJs} onClick={this.handleItemClick}>
-          <Image src={jsLogo} size="mini" className="label-logo"/>
-        </Menu.Item>
-
-        <Menu.Item name="showOcaml" active={showOcaml} onClick={this.handleItemClick}>
-          <Image src={ocamlLogo} size="mini" className="label-logo"/>
-        </Menu.Item>
-
-      </Menu>
-    );
-
-    const resultBlock = showOutput ?
-      <div className="code-results">
-        <Label ribbon="right" basic color={showOutput ? "brown" : "grey"}
-               as="a" onClick={this.handleItemClick} content="showOutput">
-          <Icon name="terminal" size="small" bordered/>
-        </Label>
-
-        {
-          showOutput && ReasonEditor2.getEditor(this.state.output.map(
-            (item, i) => formatOutput(item),
-          ).join("\n"), "result")
-        }
-      </div> : <div className="code-results"/>;
-
-    const jsBlock = showJs ?
-      <div className="js-code">
-        <Label ribbon="right" basic color={showJs ? "yellow" : "grey"}
-               as="a" onClick={this.handleItemClick} content="showJs">
-          <Image src={jsLogo} size="mini" className="label-logo"/>
-        </Label>
-        {showJs && ReasonEditor2.getEditor(js, "javascript")}
-      </div> : <div className="js-code"/>;
-
-    const ocamlBlock = showOcaml ?
-      <div className="ocaml-code">
-        <Label ribbon="right" basic color={showOcaml ? "orange" : "grey"}
-               as="a" onClick={this.handleItemClick} content="showOcaml">
-          <Image src={ocamlLogo} size="mini" className="label-logo"/>
-        </Label>
-        {showOcaml && ReasonEditor2.getEditor(ocaml, "ocaml")}
-      </div> : <div className="ocaml-code"/>;
+    const rightLangBlocks = ReasonEditor2.getEditorsForLangs(
+      langsOnRight.filter(({show}) => show));
 
     return (
-      <Segment.Group horizontal>
-        <Segment>
-          {/*<Label color="red" ribbon basic><Icon fitted name="terminal" spaced="right"/> Result</Label>*/}
-          {menuBlock}
-          {reasonBlock}
+      <Segment.Group horizontal style={{border: "none", boxShadow: "none"}}>
+        <Segment basic>
+          {leftLangBlocks}
         </Segment>
-        <Segment>
-          {resultBlock}
-          {jsBlock}
-          {ocamlBlock}
+        <Segment basic>
+          <Menu icon compact size="mini" widths={langsOnRight.length as SemanticWIDTHS}>
+            {rightLangToggleMenu}
+          </Menu>
+          {rightLangBlocks}
         </Segment>
       </Segment.Group>
     );

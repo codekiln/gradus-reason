@@ -20,3 +20,4 @@
 -   Uses [Semantic-UI-React](https://react.semantic-ui.com/)
 -   The reason code editor is powered by [CodeMirror](https://codemirror.net/)
     and is a custom adaptation of the reason [try page](https://reasonml.github.io/try/)
+-   src/images uses [console by Vignesh Nandha Kumar from the Noun Project](https://thenounproject.com/term/console/572147/)

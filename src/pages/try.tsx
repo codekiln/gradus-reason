@@ -1,6 +1,6 @@
 import * as React from "react";
 import debounce, {DebounceCallback} from "../utils/debounce";
-import Editor from "../components/ReasonEditor";
+import ReasonEditor from "../components/ReasonEditor";
 import Container from "semantic-ui-react/dist/commonjs/elements/Container/Container";
 import {Segment} from "semantic-ui-react";
 import Divider from "semantic-ui-react/dist/commonjs/elements/Divider/Divider";
@@ -551,7 +551,7 @@ export default class Try extends React.Component<ITryProps, ITryState> {
         <Segment vertical style={{border: "none"}}>
           <div>
             <div>
-              <Editor
+              <ReasonEditor
                 reason={reason}
                 ocaml={ocaml}
                 js={js}

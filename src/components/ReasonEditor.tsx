@@ -77,19 +77,19 @@ export default class ReasonEditor extends React.Component<CodeEditorProps, Reaso
 
     const reasonBlock = reason ?
       <div className="reason-code">
-        {ReasonEditor.getEditor(reason, "reason", options, onUpdateCode)}
+        {ReasonEditor.getEditor(reason, Lang.Reason, options, onUpdateCode)}
       </div>
       : <code/>;
 
     const ocamlBlock = ocaml ?
       <div className="ocaml-code">
-        {ReasonEditor.getEditor(ocaml, "ocaml", {...options}, onUpdateCode)}
+        {ReasonEditor.getEditor(ocaml, Lang.OCaml, {...options}, onUpdateCode)}
       </div>
       : <code/>;
 
     const jsBlock = js ?
       <div className="js-code">
-        {ReasonEditor.getEditor(ocaml, "javascript", {...options}, onUpdateCode)}
+        {ReasonEditor.getEditor(ocaml, Lang.Javascript, {...options}, onUpdateCode)}
       </div>
       : <code/>;
 
@@ -97,7 +97,7 @@ export default class ReasonEditor extends React.Component<CodeEditorProps, Reaso
       <div className="code-results">
         <Label color="brown" ribbon basic><Icon fitted name="terminal" spaced="right"/> Result</Label>
         {
-          ReasonEditor.getEditor(result, "result", {...options})
+          ReasonEditor.getEditor(result, Lang.Output, {...options})
         }
       </div>
       : <div className="code-results"/>;
