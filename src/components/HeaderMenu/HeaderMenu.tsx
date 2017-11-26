@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {toggleSidebar} from "../../store";
 import {MenuProps} from "../Menu";
-import {Container, Menu} from "semantic-ui-react";
+import {Container, Menu, Icon} from "semantic-ui-react";
 import * as logo from "../../images/icon_75.png";
 import {withoutPrefix, withPrefix} from "../../gatsby-utils";
 
@@ -32,6 +32,9 @@ export const HeaderMenu = ({items, pathname, Link, inverted, dispatch}: HeaderMe
           active={active}
         />;
       })}
+      <Menu.Item href="https://github.com/codekiln/gradus-reason" target="_blank">
+        <Icon name="github" alt="Gradus Reason"/>
+      </Menu.Item>
     </Menu>
   </Container>;
 
