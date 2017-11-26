@@ -66,8 +66,8 @@ export default (props: IndexPageProps) =>
               <p>
                 Reason <a href="https://ocaml.org/" target="_blank">is OCaml</a>. It <a href="https://goo.gl/qxQCct">
                 compiles to a fast native executable</a>, and yet (unlike C or C++) it is type-safe and
-                garbage collected, making it possible to write provably correct code.
-                Using <a href="https://mirage.io/">MiragOS</a> you can even compile your program down to a minimal
+                garbage collected, making it easier to correct code.
+                Using <a href="https://mirage.io/">MirageOS</a> you can compile your program down to a minimal
                 operating system that runs on bare metal.
               </p>
             </Grid.Column>
@@ -122,7 +122,7 @@ export default (props: IndexPageProps) =>
                   for scholars to <em>gradually</em> learn how to write Greek and Latin verse.
                 </p>
                 <Image centered size="small" src={gradus2}/>
-                <Image centered size="small" src={gradus3}/>
+
               </Card.Description>
             </Card.Content>
           </Card>
@@ -141,8 +141,7 @@ export default (props: IndexPageProps) =>
                   the <a href="https://github.com/codekiln/gradus-reason">github
                   repo</a>.
                 </p>
-                <Image centered size="small" src={gradus6}/>
-                <Image centered size="small" src={gradus5}/>
+                <Image centered size="small" src={gradus3}/>
               </Card.Description>
             </Card.Content>
           </Card>
