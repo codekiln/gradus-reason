@@ -55,6 +55,10 @@ export default class ReasonEditor extends React.Component<CodeEditorProps, Reaso
     const {reason, ocaml, js, onUpdateCode, options, result, title} = this.props;
     const {showResult, showOcaml, showJs} = this.state;
 
+    if (typeof navigator === "undefined") {
+      return (<code>{reason}</code>);
+    }
+
     const menuBlock = (
       <Menu icon secondary size="mini">
         <Menu.Item name="showResult" active={showResult}

@@ -52,8 +52,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby website`,
-        short_name: `Gatsby website`,
+        name: `Gradus Reason`,
+        short_name: `Gradus Reason`,
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#191919`,

@@ -490,6 +490,9 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
   }
 
   render() {
+    if (typeof navigator === "undefined") {
+      return (<code>{this.state.reason}</code>);
+    }
 
     const langsOnLeft = [Lang.Reason].map(this.getLangInfo);
     const leftLangBlocks = ReasonEditor2.getEditorsForLangs(langsOnLeft);

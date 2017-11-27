@@ -29,7 +29,6 @@ export default (props: IndexPageProps) =>
       <Container text>
         <Header as="h1">Gradus <img src={reasonWordLogo} alt="Reason"/></Header>
         <Header as="h2">Steps to learning Reason OCaml</Header>
-        <Button primary size="huge"><Link to="/steps/">Get started!</Link></Button>
       </Container>
     </Segment>
 
