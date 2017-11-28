@@ -13,5 +13,6 @@ node_js:
 install:
   - yarn install
   - yarn lernabootstrap
+  - yarn lernabuild
 script:
   - yarn deploy

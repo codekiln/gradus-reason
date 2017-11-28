@@ -1,7 +1,7 @@
 {
   "name": "gatsby-remark-reason",
   "description": "Adds syntax realtime Reason OCaml editing to markdown posts",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "author": "Myer Nore",
   "dependencies": {
     "unist-util-visit": "^1.1.1"

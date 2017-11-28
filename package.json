@@ -25,7 +25,8 @@
     "storybook:build": "build-storybook -c .storybook -o public/docs",
     "codeclimate": "codeclimate-test-reporter < coverage/lcov.info",
     "lernawatch": "lerna run watch --no-sort --stream --concurrency 999",
-    "lernabootstrap": "lerna bootstrap"
+    "lernabootstrap": "lerna bootstrap",
+    "lernabuild": "lerna run build"
   },
   "dependencies": {
     "@types/lodash": "^4.14.63",
