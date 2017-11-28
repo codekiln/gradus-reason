@@ -136,7 +136,8 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
     return (<code>{code}</code>);
   }
 
-  static getEditorForLang({code, lang, image, onUpdateCode}: LangInfo) {
+  static getEditorForLang({code, lang, image, onUpdateCode, errorOrCompileWarning,
+                            syntaxError, compileError}: LangInfo) {
     if (typeof navigator !== "undefined") {
       const localEditorOptions = {
         gutters: [],
@@ -151,6 +152,29 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
               lang={lang}
               onEditorChange={onUpdateCode}
             />
+            {syntaxError &&
+              <div className="syntax-error">
+                {formatErrorLocation(syntaxError.location)}
+                {" "}
+                {}
+                {capitalizeFirstChar(
+                  stripErrorNumberFromReasonSyntaxError(
+                    syntaxError.message))}
+              </div>
+            }
+            {errorOrCompileWarning &&
+              <div className="errorOrCompileWarning">
+                {(errorOrCompileWarning as CompileError).js_error_msg
+                  ? (errorOrCompileWarning as CompileError).js_error_msg
+                  : errorOrCompileWarning.message}
+              </div>
+            }
+            {compileError &&
+              <div>
+                <div>
+                  {compileError}
+                </div>
+              </div>}
           </List.Content>
         </List.Item>
       );

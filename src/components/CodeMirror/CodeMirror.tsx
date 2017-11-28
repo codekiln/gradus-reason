@@ -43,7 +43,7 @@ const langToOptions = {
   },
   reason: {
     gutters: ["gutter-reason"],
-    lineNumbers: false,
+    lineNumbers: true,
     mode: "javascript",
   },
   result: {
