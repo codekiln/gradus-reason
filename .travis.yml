@@ -10,5 +10,8 @@ notifications:
   email: false
 node_js:
   - node
+install:
+  - yarn install
+  - yarn lernabootstrap
 script:
   - yarn deploy
