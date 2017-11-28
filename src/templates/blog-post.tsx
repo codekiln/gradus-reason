@@ -3,7 +3,6 @@ import Link from "gatsby-link";
 import {Card, Comment, Container, Grid, Header, Image, Item, Label, Segment} from "semantic-ui-react";
 import {ImageSharp, MarkdownRemark, MarkdownRemarkConnection} from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
-import {getPrefixedSrcSet, withPrefix} from "../gatsby-utils";
 import HtmlContent from "../components/HtmlContent/HtmlContent";
 
 interface BlogPostProps {
@@ -26,8 +25,8 @@ export default (props: BlogPostProps) => {
       const recentCover = node.frontmatter.image.children[0] as ImageSharp;
       const avatarImage = (
         <Image inline spaced="right">
-          <img src={withPrefix(recentAvatar.responsiveResolution.src)}
-               srcSet={getPrefixedSrcSet(recentAvatar.responsiveResolution.srcSet)}/>
+          <img src={recentAvatar.responsiveResolution.src}
+               srcSet={recentAvatar.responsiveResolution.srcSet}/>
         </Image>);
       const extra = (
         <Comment.Group>
@@ -47,8 +46,8 @@ export default (props: BlogPostProps) => {
 
       const cardImage = (
         <Image>
-          <img src={withPrefix(recentCover.responsiveResolution.src)}
-               srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}/>
+          <img src={recentCover.responsiveResolution.src}
+               srcSet={recentCover.responsiveResolution.srcSet}/>
         </Image>);
       return (
         <div key={node.fields.slug} style={{paddingBottom: "1em"}}>
@@ -63,8 +62,8 @@ export default (props: BlogPostProps) => {
     });
 
   const recentCover = frontmatter.image.children[0] as ImageSharp;
-  const itemImg = (<img src={withPrefix(avatar.responsiveResolution.src)}
-                        srcSet={getPrefixedSrcSet(avatar.responsiveResolution.srcSet)}/> );
+  const itemImg = (<img src={avatar.responsiveResolution.src}
+                        srcSet={avatar.responsiveResolution.srcSet}/> );
   return (
     <Container>
       <BlogTitle/>

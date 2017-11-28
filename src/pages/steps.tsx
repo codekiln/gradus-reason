@@ -1,11 +1,10 @@
 import * as React from "react";
 import Link from "gatsby-link";
-import {Card, Comment, Container, Grid, Segment, Item} from "semantic-ui-react";
+import {Card, Comment, Container, Grid, Segment} from "semantic-ui-react";
 import {ImageSharp, MarkdownRemarkConnection} from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import TagsCard from "../components/TagsCard/TagsCard";
 import BlogPagination from "../components/BlogPagination/BlogPagination";
-import {getPrefixedSrcSet, withPrefix} from "../gatsby-utils";
 import Image from "semantic-ui-react/dist/commonjs/elements/Image/Image";
 
 interface BlogProps {
@@ -39,8 +38,8 @@ export default (props: BlogProps) => {
           <Comment.Group>
             <Comment>
               <Image size="tiny" shape="circular" inline>
-                <img src={withPrefix(avatar.responsiveResolution.src)}
-                     srcSet={getPrefixedSrcSet(avatar.responsiveResolution.srcSet)}/>
+                <img src={avatar.responsiveResolution.src}
+                     srcSet={avatar.responsiveResolution.srcSet}/>
               </Image>
               <Comment.Content>
                 <Comment.Author style={{fontWeight: 400}}>
@@ -65,8 +64,8 @@ export default (props: BlogProps) => {
         return (
           <Card key={slug}
                 fluid
-                image={<Image><img src={withPrefix(cover.responsiveResolution.src)}
-                                   srcSet={getPrefixedSrcSet(cover.responsiveResolution.srcSet)}/></Image>}
+                image={<Image><img src={cover.responsiveResolution.src}
+                                   srcSet={cover.responsiveResolution.srcSet}/></Image>}
                 header={(<h2><Link to={slug}>{frontmatter.title}</Link></h2>)}
                 extra={extra}
                 description={description}
