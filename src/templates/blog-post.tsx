@@ -83,8 +83,8 @@ export default (props: BlogPostProps) => {
       </Segment>
       <Image fluid>
         <img
-          src={withPrefix(recentCover.responsiveResolution.src)}
-          srcSet={getPrefixedSrcSet(recentCover.responsiveResolution.srcSet)}
+          src={recentCover.responsiveResolution.src}
+          srcSet={recentCover.responsiveResolution.srcSet}
         />
       </Image>
       <Segment vertical
