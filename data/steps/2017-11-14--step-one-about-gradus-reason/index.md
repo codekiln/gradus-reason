@@ -1,21 +1,21 @@
 ---
 title: Step One - About Gradus Reason
 createdDate: "2017-11-14"
-updatedDate: "2017-11-14"
+updatedDate: "2017-11-28"
 author: "Myer Nore"
 tags:
-  - about_gradus_reason
-image: default.jpg
+  - meta
+image: gradus_header.png
 draft: false
 ---
 
-Reason step / post / tutorial coming here soon ... please edit
-[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-11-14--step-one-about-gradus-reason/index.md)!
+Welcome to _Gradus Reason_. This site is a place to learn the Reason OCaml language.
 
-## TODO
+The name _Gradus_ is a reference to ancient language textbooks such as 
+[_Gradus ad Parnassum_](https://en.wikipedia.org/wiki/Gradus_ad_Parnassum), which were used 
+by early scholars to learn Latin and Greek. The title meant 
+"Steps to Parnassus," a mountain range in Greece that was symbolically important for 
+the arts and creative activity.
 
--   [ ] Replace default.jpg image for this step
--   [ ] Write an awesome article
--   [ ] Remove these todos
--   [ ] `git add ./data/steps/2017-11-14--step-one-about-gradus-reason; git commit -m "Added Step One - About Gradus Reason step"`
--   [ ] PR to [gradus-reason](https://github.com/codekiln/gradus-reason)
+The posts here aim to be instructive and contain plenty of examples that mark the 
+steps of one learning the language.

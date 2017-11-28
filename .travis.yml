@@ -13,12 +13,10 @@ node_js:
 install:
   - yarn install
   - yarn lernabootstrap
-  - yarn lernabuild
 script:
+  - yarn lernabuild
   - yarn build
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: gh-pages
