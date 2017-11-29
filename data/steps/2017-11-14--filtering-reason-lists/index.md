@@ -9,11 +9,10 @@ image: default.jpg
 draft: false
 ---
 
-Reason step / post / tutorial coming here soon ... please edit
-[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-11-14--filtering-reason-lists/index.md)!
+The [Reason docs for lists are here](https://reasonml.github.io/guide/language/list-and-array). Basically,
+a list in Reason OCaml specifically refers to a linked list data structure. 
 
-It's now possible to get an editor in the blog post. To get reason syntax highlighting, just 
-use a fenced code block marked with `reason`:
+Here's a quick example to record how to filter a list and print it out:
 
 ```reason
 let myStrs = ["", "a", "ab", "abc", "abcd", "abcde"];
@@ -22,10 +21,5 @@ myStrs
 	|> List.iter(Js.log)
 ```
 
-## TODO
-
--   [ ] Replace default.jpg image for this step
--   [ ] Write an awesome article
--   [ ] Remove these todos
--   [ ] `git add ./data/steps/2017-11-14--filtering-reason-lists; git commit -m "Added Filtering Reason Lists step"`
--   [ ] PR to [gradus-reason](https://github.com/codekiln/gradus-reason)
+(_Edit this post 
+[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-11-14--filtering-reason-lists/index.md)!_)
