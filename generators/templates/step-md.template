@@ -7,9 +7,7 @@ image: default.jpg
 draft: {{draft}}
 ---
 
-Reason step / post / tutorial coming here soon ... please edit
-[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/{{createdDate}}--{{dashCase title}}/index.md)!
-
+_[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/{{createdDate}}--{{dashCase title}}/index.md)_
 
 ## TODO
 
