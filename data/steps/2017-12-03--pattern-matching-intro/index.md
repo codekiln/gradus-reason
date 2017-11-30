@@ -1,5 +1,5 @@
 ---
-title: pattern matching intro
+title: Pattern Matching Intro
 createdDate: "2017-12-03"
 updatedDate: "2017-12-03"
 author: "Myer Nore"
