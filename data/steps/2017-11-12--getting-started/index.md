@@ -1,5 +1,5 @@
 ---
-title: Step One - Getting Started With Reason
+title: Getting Started
 createdDate: "2017-11-13"
 updatedDate: "2017-11-23"
 author: "Myer Nore"
