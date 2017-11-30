@@ -1,7 +1,7 @@
 ---
 title: Filtering Reason Lists
-createdDate: "2017-11-14"
-updatedDate: "2017-11-14"
+createdDate: "2017-12-10"
+updatedDate: "2017-12-10"
 author: "Myer Nore"
 tags:
   - lists
@@ -22,4 +22,4 @@ myStrs
 ```
 
 (_Edit this post 
-[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-11-14--filtering-reason-lists/index.md)!_)
+[here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-12-10--reason-lists/index.md)!_)
