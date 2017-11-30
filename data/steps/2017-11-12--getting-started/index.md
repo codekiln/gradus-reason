@@ -74,17 +74,16 @@ here 7 was interpreted as an **int**eger.
 The multiplication operator `*` was performed before `+`, which means that it has 
 higher operator precedence. What if you wanted to find out about operator precedence 
 in Reason? With Reason it's advisable to start with 
-[doing a google site search of reasonml.github.io](https://www.google.com/search?q=site%3Areasonml.github.io+precedence&oq=site%3Areasonml.github.io+precedence).
+[doing a google site search of reasonml.github.io](https://www.google.com/search?q=site:reasonml.github.io+precedence).
 
 In this case, there aren't any results that explicitly show an operator precedence table,
 which is standard for language documentation (see, for example, the [python language operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence).) The next step would be to 
-do [a site search of realworldocaml.org](https://www.google.com/search?q=site%3Arealworldocaml.org+precedence&oq=site%3Arealworldocaml.org+precedence), a great book about OCaml that is available online. That would lead
+do [a site search of realworldocaml.org](https://www.google.com/search?q=site:realworldocaml.org+precedence), a great book about OCaml that is available online. That would lead
 you to [the OCaml operator precedence table](https://realworldocaml.org/v1/en/html/variables-and-functions.html#table2_1).
 
-This example shows how if learning Reason involves searching for direct documentation, 
-then searching for backup documentation on OCaml and interpreting the results. 
-Reason is just a syntax of OCaml, so it should be the same except for where Reason 
-explicitly says it deviates.
+This example shows how learning Reason involves searching Reason docs, 
+then searching for backup documentation on OCaml. Reason is just a syntax of OCaml, 
+so it should be the same except for where Reason says it deviates.
 
 ## Tour of the `rtop` REPL
 
@@ -123,14 +122,14 @@ in Reason, the branches of an if-else expression must return the same type:
     Reason # if (60 > 50) {0} else {'c'};
     Error: This expression has type char but an expression was expected of type int
 
-## Exploration Prompts:
+## To Explore:
 
 1.  What is the type of expression returned by each of the following?
-        30;
-        1000 / 100 / 10;
-        true || false;
-        true && false;
-        'a' + 'b';
+    1.  `30;`
+    2.  `1000 / 100 / 10;`
+    3.  `true || false;`
+    4.  `true && false;`
+    5.  `'a' + 'b';`
 2.  Consider `1 + 2 mod 3`, `(1 + 2) mod 3`, and `1 + (2 mod 3)`. What does this mean 
     about `+` vs `mod`?
 3.  What are the values of `min_int` and `max_int`? What do they come from?
