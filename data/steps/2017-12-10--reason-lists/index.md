@@ -6,7 +6,7 @@ author: "Myer Nore"
 tags:
   - lists
 image: default.jpg
-draft: false
+draft: true
 ---
 
 The [Reason docs for lists are here](https://reasonml.github.io/guide/language/list-and-array). Basically,

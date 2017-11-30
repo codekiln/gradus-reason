@@ -9,7 +9,7 @@ tags:
   - rtop
   - getting_started
 image: default.jpg
-draft: true
+draft: false
 ---
 
 When getting started writing functions, it is very helpful to use 
