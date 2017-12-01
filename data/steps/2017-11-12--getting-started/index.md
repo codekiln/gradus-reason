@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 createdDate: "2017-11-13"
-updatedDate: "2017-11-23"
+updatedDate: "2017-11-13"
 author: "Myer Nore"
 tags:
   - meta
