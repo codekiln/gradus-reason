@@ -27,25 +27,25 @@ using the equals sign (`=`):
 
 ## Making functions: `(x) => x * 2;`
 
-The basic ([syntax for a function in the Reason Docs here](https://reasonml.github.io/guide/language/function)). 
-A function is constructed with parentheses `()` and a "fat arrow" or "rocket" `=>`:
+The basic [syntax for a function in the Reason Docs here](https://reasonml.github.io/guide/language/function). 
+A function is constructed with parentheses `()` and a "fat arrow" `=>`:
 
     Reason # let cube = (x) => x * x * x;
-    let cube: (int) => int = <fun>;                                                                    
-    Reason # cube;
-    - : (int) => int = <fun>                                                                           
+    let cube: (int) => int;                                                                    
+    Reason # cube; 
+    - : (int) => int                                                                           
     Reason # cube(3);
     - : int = 27                                                                                       
 
 Reason interpreted the function to take an integer parameter and return an integer:
-`(int) => int = <fun>`. The first part of this, `(int) => int` is the "type signature" of
+`(int) => int`. `(int) => int` is the "type signature" of
 the function, which identifies the types it takes and the types it returns.  
 
 Let's look at a function that returns true if a provided int is negative and 
 returns false otherwise:
 
     Reason # let neg = (x) => if (x < 0) {true} else {false};
-    let neg: (int) => bool = <fun>;                                                                   
+    let neg: (int) => bool;                                                                   
     Reason # neg(2);
     - : bool = false                                                                                  
     Reason # neg(-2);
@@ -59,7 +59,7 @@ This uses referential equality, which is documented in
 
     Reason # let isvowel = (c) =>
       c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';
-    let isvowel: (char) => bool = <fun>;                                                              
+    let isvowel: (char) => bool;                                                              
     Reason # isvowel('a');
     - : bool = true                                                                                   
     Reason # isvowel('b');
@@ -70,7 +70,7 @@ true if they add to ten:
 
     Reason # let addtoten = (a, b) =>
       a + b === 10;
-    let addtoten: (int, int) => bool = <fun>;                                                         
+    let addtoten: (int, int) => bool;                                                         
     Reason # addtoten(6, 4);
     - : bool = true                                                                                   
     Reason # addtoten(5, 7);
@@ -81,7 +81,7 @@ of a provided integer:
 
     Reason # let rec factorial = (a) =>
       a === 1 ? 1 : a * factorial(a - 1);
-    let factorial: (int) => int = <fun>;                                                              
+    let factorial: (int) => int;                                                              
     Reason # factorial(2);
     - : int = 2                                                                                       
     Reason # factorial(3);
@@ -94,7 +94,7 @@ of two integers, using the `mod` operator:
 
     Reason # let rec gcd = (a, b) =>
       b === 0 ? a : gcd(b, a mod b);
-    let gcd: (int, int) => int = <fun>;                                                               
+    let gcd: (int, int) => int;                                                               
     Reason # gcd(120, 60);
     - : int = 60                                                                                      
     Reason # gcd(120, 64);
