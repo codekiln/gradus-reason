@@ -65,7 +65,7 @@ export default (props: IndexPageProps) =>
               <p>
                 Reason <a href="https://ocaml.org/" target="_blank">is OCaml</a>. It <a href="https://goo.gl/qxQCct">
                 compiles to a fast native executable</a>, and yet (unlike C or C++) it is type-safe and
-                garbage collected, making it easier to correct code.
+                garbage collected, making it easier to write correct code.
                 Using <a href="https://mirage.io/">MirageOS</a> you can compile your program down to a minimal
                 operating system that runs on bare metal.
               </p>
