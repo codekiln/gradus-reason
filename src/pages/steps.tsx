@@ -22,9 +22,9 @@ interface BlogProps {
 
 export default (props: BlogProps) => {
   const tags = props.data.tags.group;
-  const posts = props.data.posts.edges;
+  const posts = props.data.posts ? props.data.posts.edges : [];
   const {pathname} = props.location;
-  const pageCount = Math.ceil(props.data.posts.totalCount / 10);
+  const pageCount = Math.ceil(props.data.posts ? props.data.posts.totalCount : 0 / 10);
 
   // TODO export posts in a proper component
   const Posts = (

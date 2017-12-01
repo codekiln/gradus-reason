@@ -5,15 +5,15 @@ export interface RootQueryType {
   allSitePlugin: SitePluginConnection | null;
   allFile: FileConnection | null;
   allImageSharp: ImageSharpConnection | null;
-  allMarkdownRemark: MarkdownRemarkConnection | null;
   allAuthorJson: AuthorJsonConnection | null;
+  allMarkdownRemark: MarkdownRemarkConnection | null;
   sitePage: SitePage | null;
   sitePlugin: SitePlugin | null;
   site: Site | null;
   file: File | null;
   imageSharp: ImageSharp | null;
-  markdownRemark: MarkdownRemark | null;
   authorJson: AuthorJson | null;
+  markdownRemark: MarkdownRemark | null;
 }
 
 export interface AllSitePageRootQueryTypeArgs {
@@ -44,18 +44,18 @@ export interface AllImageSharpRootQueryTypeArgs {
   filter: filterImageSharp | null;
 }
 
-export interface AllMarkdownRemarkRootQueryTypeArgs {
-  skip: number | null;
-  limit: number | null;
-  sort: markdownRemarkConnectionSort | null;
-  filter: filterMarkdownRemark | null;
-}
-
 export interface AllAuthorJsonRootQueryTypeArgs {
   skip: number | null;
   limit: number | null;
   sort: authorJsonConnectionSort | null;
   filter: filterAuthorJson | null;
+}
+
+export interface AllMarkdownRemarkRootQueryTypeArgs {
+  skip: number | null;
+  limit: number | null;
+  sort: markdownRemarkConnectionSort | null;
+  filter: filterMarkdownRemark | null;
 }
 
 export interface SitePageRootQueryTypeArgs {
@@ -120,11 +120,13 @@ export interface FileRootQueryTypeArgs {
   uid: fileUidQueryInteger_2 | null;
   gid: fileGidQueryInteger_2 | null;
   rdev: fileRdevQueryInteger_2 | null;
+  blksize: fileBlksizeQueryInteger_2 | null;
   ino: fileInoQueryInteger_2 | null;
-  atimeMs: fileAtimeMsQueryFloat_2 | null;
-  mtimeMs: fileMtimeMsQueryFloat_2 | null;
-  ctimeMs: fileCtimeMsQueryFloat_2 | null;
-  birthtimeMs: fileBirthtimeMsQueryFloat_2 | null;
+  blocks: fileBlocksQueryInteger_2 | null;
+  atimeMs: fileAtimeMsQueryInteger_2 | null;
+  mtimeMs: fileMtimeMsQueryInteger_2 | null;
+  ctimeMs: fileCtimeMsQueryInteger_2 | null;
+  birthtimeMs: fileBirthtimeMsQueryInteger_2 | null;
   atime: fileAtimeQueryString_2 | null;
   mtime: fileMtimeQueryString_2 | null;
   ctime: fileCtimeQueryString_2 | null;
@@ -140,6 +142,15 @@ export interface ImageSharpRootQueryTypeArgs {
   resize: resizeTypeName_3 | null;
 }
 
+export interface AuthorJsonRootQueryTypeArgs {
+  id: authorJsonIdQueryString_2 | null;
+  bio: authorJsonBioQueryString_2 | null;
+  avatar: authorJsonAvatarQueryString_2 | null;
+  twitter: authorJsonTwitterQueryString_2 | null;
+  github: authorJsonGithubQueryString_2 | null;
+  internal: authorJsonInternalInputObject_2 | null;
+}
+
 export interface MarkdownRemarkRootQueryTypeArgs {
   id: markdownRemarkIdQueryString_2 | null;
   internal: markdownRemarkInternalInputObject_2 | null;
@@ -151,15 +162,6 @@ export interface MarkdownRemarkRootQueryTypeArgs {
   headings: headingsQueryList_3 | null;
   timeToRead: timeToReadQueryInt_3 | null;
   tableOfContents: tableOfContentsQueryString_3 | null;
-}
-
-export interface AuthorJsonRootQueryTypeArgs {
-  id: authorJsonIdQueryString_2 | null;
-  bio: authorJsonBioQueryString_2 | null;
-  avatar: authorJsonAvatarQueryString_2 | null;
-  twitter: authorJsonTwitterQueryString_2 | null;
-  github: authorJsonGithubQueryString_2 | null;
-  internal: authorJsonInternalInputObject_2 | null;
 }
 
 export interface sitePageConnectionSort {
@@ -516,9 +518,9 @@ export interface sitePluginConnectionPluginOptionsInputObject_2 {
   path: sitePluginConnectionPluginOptionsPathQueryString_2 | null;
   maxWidth: sitePluginConnectionPluginOptionsMaxWidthQueryInteger_2 | null;
   backgroundColor: sitePluginConnectionPluginOptionsBackgroundColorQueryString_3 | null;
-  wrapperStyle: sitePluginConnectionPluginOptionsWrapperStyleQueryString | null;
-  linkImagesToOriginal: sitePluginConnectionPluginOptionsLinkImagesToOriginalQueryBoolean | null;
-  pathPrefix: sitePluginConnectionPluginOptionsPathPrefixQueryString | null;
+  wrapperStyle: sitePluginConnectionPluginOptionsWrapperStyleQueryString_2 | null;
+  linkImagesToOriginal: sitePluginConnectionPluginOptionsLinkImagesToOriginalQueryBoolean_2 | null;
+  pathPrefix: sitePluginConnectionPluginOptionsPathPrefixQueryString_2 | null;
   short_name: sitePluginConnectionPluginOptionsShortNameQueryString_2 | null;
   start_url: sitePluginConnectionPluginOptionsStartUrlQueryString_2 | null;
   background_color: sitePluginConnectionPluginOptionsBackgroundColorQueryString_4 | null;
@@ -570,9 +572,9 @@ export interface sitePluginConnectionPluginOptionsPluginsVersionQueryString_2 {
 export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsInputObject_2 {
   maxWidth: sitePluginConnectionPluginOptionsPluginsPluginOptionsMaxWidthQueryInteger_2 | null;
   backgroundColor: sitePluginConnectionPluginOptionsPluginsPluginOptionsBackgroundColorQueryString_2 | null;
-  wrapperStyle: sitePluginConnectionPluginOptionsPluginsPluginOptionsWrapperStyleQueryString | null;
-  linkImagesToOriginal: sitePluginConnectionPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean | null;
-  pathPrefix: sitePluginConnectionPluginOptionsPluginsPluginOptionsPathPrefixQueryString | null;
+  wrapperStyle: sitePluginConnectionPluginOptionsPluginsPluginOptionsWrapperStyleQueryString_2 | null;
+  linkImagesToOriginal: sitePluginConnectionPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean_2 | null;
+  pathPrefix: sitePluginConnectionPluginOptionsPluginsPluginOptionsPathPrefixQueryString_2 | null;
 }
 
 export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsMaxWidthQueryInteger_2 {
@@ -587,19 +589,19 @@ export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsBackground
   glob: string | null;
 }
 
-export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsWrapperStyleQueryString {
+export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsWrapperStyleQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
   glob: string | null;
 }
 
-export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean {
+export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean_2 {
   eq: boolean | null;
   ne: boolean | null;
 }
 
-export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsPathPrefixQueryString {
+export interface sitePluginConnectionPluginOptionsPluginsPluginOptionsPathPrefixQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
@@ -639,19 +641,19 @@ export interface sitePluginConnectionPluginOptionsBackgroundColorQueryString_3 {
   glob: string | null;
 }
 
-export interface sitePluginConnectionPluginOptionsWrapperStyleQueryString {
+export interface sitePluginConnectionPluginOptionsWrapperStyleQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
   glob: string | null;
 }
 
-export interface sitePluginConnectionPluginOptionsLinkImagesToOriginalQueryBoolean {
+export interface sitePluginConnectionPluginOptionsLinkImagesToOriginalQueryBoolean_2 {
   eq: boolean | null;
   ne: boolean | null;
 }
 
-export interface sitePluginConnectionPluginOptionsPathPrefixQueryString {
+export interface sitePluginConnectionPluginOptionsPathPrefixQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
@@ -882,7 +884,7 @@ export interface fileConnectionSort {
   order: fileConnectionSortOrderValues | null;
 }
 
-export type FileConnectionSortByFieldsEnum = "id" | "children" | "parent" | "internal___contentDigest" | "internal___mediaType" | "internal___type" | "internal___owner" | "sourceInstanceName" | "absolutePath" | "relativePath" | "extension" | "size" | "prettySize" | "modifiedTime" | "accessTime" | "changeTime" | "birthTime" | "root" | "dir" | "base" | "ext" | "name" | "dev" | "mode" | "nlink" | "uid" | "gid" | "rdev" | "ino" | "atimeMs" | "mtimeMs" | "ctimeMs" | "birthtimeMs" | "atime" | "mtime" | "ctime" | "birthtime";
+export type FileConnectionSortByFieldsEnum = "id" | "children" | "parent" | "internal___contentDigest" | "internal___mediaType" | "internal___type" | "internal___owner" | "sourceInstanceName" | "absolutePath" | "relativePath" | "extension" | "size" | "prettySize" | "modifiedTime" | "accessTime" | "changeTime" | "birthTime" | "root" | "dir" | "base" | "ext" | "name" | "dev" | "mode" | "nlink" | "uid" | "gid" | "rdev" | "blksize" | "ino" | "blocks" | "atimeMs" | "mtimeMs" | "ctimeMs" | "birthtimeMs" | "atime" | "mtime" | "ctime" | "birthtime";
 
 export type fileConnectionSortOrderValues = "ASC" | "DESC";
 
@@ -910,11 +912,13 @@ export interface filterFile {
   uid: fileConnectionUidQueryInteger_2 | null;
   gid: fileConnectionGidQueryInteger_2 | null;
   rdev: fileConnectionRdevQueryInteger_2 | null;
+  blksize: fileConnectionBlksizeQueryInteger_2 | null;
   ino: fileConnectionInoQueryInteger_2 | null;
-  atimeMs: fileConnectionAtimeMsQueryFloat_2 | null;
-  mtimeMs: fileConnectionMtimeMsQueryFloat_2 | null;
-  ctimeMs: fileConnectionCtimeMsQueryFloat_2 | null;
-  birthtimeMs: fileConnectionBirthtimeMsQueryFloat_2 | null;
+  blocks: fileConnectionBlocksQueryInteger_2 | null;
+  atimeMs: fileConnectionAtimeMsQueryInteger_2 | null;
+  mtimeMs: fileConnectionMtimeMsQueryInteger_2 | null;
+  ctimeMs: fileConnectionCtimeMsQueryInteger_2 | null;
+  birthtimeMs: fileConnectionBirthtimeMsQueryInteger_2 | null;
   atime: fileConnectionAtimeQueryString_2 | null;
   mtime: fileConnectionMtimeQueryString_2 | null;
   ctime: fileConnectionCtimeQueryString_2 | null;
@@ -1096,27 +1100,37 @@ export interface fileConnectionRdevQueryInteger_2 {
   ne: number | null;
 }
 
+export interface fileConnectionBlksizeQueryInteger_2 {
+  eq: number | null;
+  ne: number | null;
+}
+
 export interface fileConnectionInoQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileConnectionAtimeMsQueryFloat_2 {
+export interface fileConnectionBlocksQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileConnectionMtimeMsQueryFloat_2 {
+export interface fileConnectionAtimeMsQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileConnectionCtimeMsQueryFloat_2 {
+export interface fileConnectionMtimeMsQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileConnectionBirthtimeMsQueryFloat_2 {
+export interface fileConnectionCtimeMsQueryInteger_2 {
+  eq: number | null;
+  ne: number | null;
+}
+
+export interface fileConnectionBirthtimeMsQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
@@ -1177,9 +1191,9 @@ export interface File extends Node {
   id: string;
   parent: Node | null;
   children: Array<Node> | null;
-  childMarkdownRemark: MarkdownRemark | null;
-  childAuthorJson: AuthorJson | null;
   childImageSharp: ImageSharp | null;
+  childAuthorJson: AuthorJson | null;
+  childMarkdownRemark: MarkdownRemark | null;
   internal: internal_10 | null;
   sourceInstanceName: string | null;
   absolutePath: string | null;
@@ -1202,7 +1216,9 @@ export interface File extends Node {
   uid: number | null;
   gid: number | null;
   rdev: number | null;
+  blksize: string | null;
   ino: number | null;
+  blocks: string | null;
   atimeMs: number | null;
   mtimeMs: number | null;
   ctimeMs: number | null;
@@ -1243,6 +1259,18 @@ export interface BirthTimeFileArgs {
   difference: string | null;
 }
 
+export interface BlksizeFileArgs {
+  formatString: string | null;
+  fromNow: boolean | null;
+  difference: string | null;
+}
+
+export interface BlocksFileArgs {
+  formatString: string | null;
+  fromNow: boolean | null;
+  difference: string | null;
+}
+
 export interface AtimeFileArgs {
   formatString: string | null;
   fromNow: boolean | null;
@@ -1267,98 +1295,11 @@ export interface BirthtimeFileArgs {
   difference: string | null;
 }
 
-export interface MarkdownRemark extends Node {
-  id: string;
-  parent: Node | null;
-  children: Array<Node> | null;
-  internal: internal_11 | null;
-  frontmatter: frontmatter_2 | null;
-  fileAbsolutePath: string | null;
-  fields: fields_2 | null;
-  html: string | null;
-  excerpt: string | null;
-  headings: Array<MarkdownHeading> | null;
-  timeToRead: number | null;
-  tableOfContents: string | null;
-}
-
-export interface ExcerptMarkdownRemarkArgs {
-  pruneLength: number | null;
-}
-
-export interface HeadingsMarkdownRemarkArgs {
-  depth: HeadingLevels | null;
-}
-
-export interface internal_11 {
-  content: string | null;
-  contentDigest: string | null;
-  type: string | null;
-  owner: string | null;
-  fieldOwners: fieldOwners_2 | null;
-}
-
-export interface fieldOwners_2 {
-  slug: string | null;
-}
-
-export interface frontmatter_2 {
-  title: string | null;
-  createdDate: string | null;
-  updatedDate: string | null;
-  author: AuthorJson | null;
-  tags: Array<string> | null;
-  image: File | null;
-  draft: boolean | null;
-  _PARENT: string | null;
-  parent: string | null;
-}
-
-export interface CreatedDatefrontmatter_2Args {
-  formatString: string | null;
-  fromNow: boolean | null;
-  difference: string | null;
-}
-
-export interface UpdatedDatefrontmatter_2Args {
-  formatString: string | null;
-  fromNow: boolean | null;
-  difference: string | null;
-}
-
-export interface AuthorJson extends Node {
-  id: string;
-  parent: Node | null;
-  children: Array<Node> | null;
-  bio: string | null;
-  avatar: File | null;
-  twitter: string | null;
-  github: string | null;
-  internal: internal_12 | null;
-}
-
-export interface internal_12 {
-  contentDigest: string | null;
-  type: string | null;
-  owner: string | null;
-}
-
-export interface fields_2 {
-  slug: string | null;
-}
-
-export type HeadingLevels = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-
-export interface MarkdownHeading {
-  value: string | null;
-  depth: number | null;
-}
-
 export interface ImageSharp extends Node {
   id: string;
   parent: Node | null;
   children: Array<Node> | null;
-  internal: internal_13 | null;
+  internal: internal_11 | null;
   original: ImageSharpOriginal | null;
   responsiveResolution: ImageSharpResponsiveResolution | null;
   responsiveSizes: ImageSharpResponsiveSizes | null;
@@ -1401,7 +1342,7 @@ export interface ResizeImageSharpArgs {
   rotate: number | null;
 }
 
-export interface internal_13 {
+export interface internal_11 {
   contentDigest: string | null;
   type: string | null;
   owner: string | null;
@@ -1450,6 +1391,93 @@ export interface ImageSharpResize {
   originalName: string | null;
 }
 
+export interface AuthorJson extends Node {
+  id: string;
+  parent: Node | null;
+  children: Array<Node> | null;
+  bio: string | null;
+  avatar: File | null;
+  twitter: string | null;
+  github: string | null;
+  internal: internal_12 | null;
+}
+
+export interface internal_12 {
+  contentDigest: string | null;
+  type: string | null;
+  owner: string | null;
+}
+
+export interface MarkdownRemark extends Node {
+  id: string;
+  parent: Node | null;
+  children: Array<Node> | null;
+  internal: internal_13 | null;
+  frontmatter: frontmatter_2 | null;
+  fileAbsolutePath: string | null;
+  fields: fields_2 | null;
+  html: string | null;
+  excerpt: string | null;
+  headings: Array<MarkdownHeading> | null;
+  timeToRead: number | null;
+  tableOfContents: string | null;
+}
+
+export interface ExcerptMarkdownRemarkArgs {
+  pruneLength: number | null;
+}
+
+export interface HeadingsMarkdownRemarkArgs {
+  depth: HeadingLevels | null;
+}
+
+export interface internal_13 {
+  content: string | null;
+  contentDigest: string | null;
+  type: string | null;
+  owner: string | null;
+  fieldOwners: fieldOwners_2 | null;
+}
+
+export interface fieldOwners_2 {
+  slug: string | null;
+}
+
+export interface frontmatter_2 {
+  title: string | null;
+  createdDate: string | null;
+  updatedDate: string | null;
+  author: AuthorJson | null;
+  tags: Array<string> | null;
+  image: File | null;
+  draft: boolean | null;
+  _PARENT: string | null;
+  parent: string | null;
+}
+
+export interface CreatedDatefrontmatter_2Args {
+  formatString: string | null;
+  fromNow: boolean | null;
+  difference: string | null;
+}
+
+export interface UpdatedDatefrontmatter_2Args {
+  formatString: string | null;
+  fromNow: boolean | null;
+  difference: string | null;
+}
+
+export interface fields_2 {
+  slug: string | null;
+}
+
+export type HeadingLevels = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+export interface MarkdownHeading {
+  value: string | null;
+  depth: number | null;
+}
+
 export interface internal_10 {
   contentDigest: string | null;
   mediaType: string | null;
@@ -1457,9 +1485,9 @@ export interface internal_10 {
   owner: string | null;
 }
 
-export type fileDistinctEnum = "id" | "children" | "parent" | "internal___contentDigest" | "internal___mediaType" | "internal___type" | "internal___owner" | "sourceInstanceName" | "absolutePath" | "relativePath" | "extension" | "size" | "prettySize" | "modifiedTime" | "accessTime" | "changeTime" | "birthTime" | "root" | "dir" | "base" | "ext" | "name" | "dev" | "mode" | "nlink" | "uid" | "gid" | "rdev" | "ino" | "atimeMs" | "mtimeMs" | "ctimeMs" | "birthtimeMs" | "atime" | "mtime" | "ctime" | "birthtime";
+export type fileDistinctEnum = "id" | "children" | "parent" | "internal___contentDigest" | "internal___mediaType" | "internal___type" | "internal___owner" | "sourceInstanceName" | "absolutePath" | "relativePath" | "extension" | "size" | "prettySize" | "modifiedTime" | "accessTime" | "changeTime" | "birthTime" | "root" | "dir" | "base" | "ext" | "name" | "dev" | "mode" | "nlink" | "uid" | "gid" | "rdev" | "blksize" | "ino" | "blocks" | "atimeMs" | "mtimeMs" | "ctimeMs" | "birthtimeMs" | "atime" | "mtime" | "ctime" | "birthtime";
 
-export type fileGroupEnum = "id" | "children" | "parent" | "internal___contentDigest" | "internal___mediaType" | "internal___type" | "internal___owner" | "sourceInstanceName" | "absolutePath" | "relativePath" | "extension" | "size" | "prettySize" | "modifiedTime" | "accessTime" | "changeTime" | "birthTime" | "root" | "dir" | "base" | "ext" | "name" | "dev" | "mode" | "nlink" | "uid" | "gid" | "rdev" | "ino" | "atimeMs" | "mtimeMs" | "ctimeMs" | "birthtimeMs" | "atime" | "mtime" | "ctime" | "birthtime";
+export type fileGroupEnum = "id" | "children" | "parent" | "internal___contentDigest" | "internal___mediaType" | "internal___type" | "internal___owner" | "sourceInstanceName" | "absolutePath" | "relativePath" | "extension" | "size" | "prettySize" | "modifiedTime" | "accessTime" | "changeTime" | "birthTime" | "root" | "dir" | "base" | "ext" | "name" | "dev" | "mode" | "nlink" | "uid" | "gid" | "rdev" | "blksize" | "ino" | "blocks" | "atimeMs" | "mtimeMs" | "ctimeMs" | "birthtimeMs" | "atime" | "mtime" | "ctime" | "birthtime";
 
 export interface fileGroupConnectionConnection {
   pageInfo: PageInfo;
@@ -1739,6 +1767,128 @@ export interface imageSharpGroupConnectionEdge {
   previous: ImageSharp | null;
 }
 
+export interface authorJsonConnectionSort {
+  fields: Array<AuthorJsonConnectionSortByFieldsEnum>;
+  order: authorJsonConnectionSortOrderValues | null;
+}
+
+export type AuthorJsonConnectionSortByFieldsEnum = "id" | "bio" | "avatar" | "twitter" | "github" | "children" | "parent" | "internal___contentDigest" | "internal___type" | "internal___owner";
+
+export type authorJsonConnectionSortOrderValues = "ASC" | "DESC";
+
+export interface filterAuthorJson {
+  id: authorJsonConnectionIdQueryString_2 | null;
+  bio: authorJsonConnectionBioQueryString_2 | null;
+  avatar: authorJsonConnectionAvatarQueryString_2 | null;
+  twitter: authorJsonConnectionTwitterQueryString_2 | null;
+  github: authorJsonConnectionGithubQueryString_2 | null;
+  internal: authorJsonConnectionInternalInputObject_2 | null;
+}
+
+export interface authorJsonConnectionIdQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionBioQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionAvatarQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionTwitterQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionGithubQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionInternalInputObject_2 {
+  contentDigest: authorJsonConnectionInternalContentDigestQueryString_2 | null;
+  type: authorJsonConnectionInternalTypeQueryString_2 | null;
+  owner: authorJsonConnectionInternalOwnerQueryString_2 | null;
+}
+
+export interface authorJsonConnectionInternalContentDigestQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionInternalTypeQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonConnectionInternalOwnerQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface AuthorJsonConnection {
+  pageInfo: PageInfo;
+  edges: Array<AuthorJsonEdge> | null;
+  totalCount: number | null;
+  distinct: Array<string> | null;
+  group: Array<authorJsonGroupConnectionConnection> | null;
+}
+
+export interface DistinctAuthorJsonConnectionArgs {
+  field: authorJsonDistinctEnum | null;
+}
+
+export interface GroupAuthorJsonConnectionArgs {
+  skip: number | null;
+  limit: number | null;
+  field: authorJsonGroupEnum | null;
+}
+
+export interface AuthorJsonEdge {
+  node: AuthorJson | null;
+  next: AuthorJson | null;
+  previous: AuthorJson | null;
+}
+
+export type authorJsonDistinctEnum = "id" | "bio" | "avatar" | "twitter" | "github" | "parent" | "internal___contentDigest" | "internal___type" | "internal___owner";
+
+export type authorJsonGroupEnum = "id" | "bio" | "avatar" | "twitter" | "github" | "parent" | "internal___contentDigest" | "internal___type" | "internal___owner";
+
+export interface authorJsonGroupConnectionConnection {
+  pageInfo: PageInfo;
+  edges: Array<authorJsonGroupConnectionEdge> | null;
+  field: string | null;
+  fieldValue: string | null;
+  totalCount: number | null;
+}
+
+export interface authorJsonGroupConnectionEdge {
+  node: AuthorJson | null;
+  next: AuthorJson | null;
+  previous: AuthorJson | null;
+}
+
 export interface markdownRemarkConnectionSort {
   fields: Array<MarkdownRemarkConnectionSortByFieldsEnum>;
   order: markdownRemarkConnectionSortOrderValues | null;
@@ -1998,128 +2148,6 @@ export interface markdownRemarkGroupConnectionEdge {
   previous: MarkdownRemark | null;
 }
 
-export interface authorJsonConnectionSort {
-  fields: Array<AuthorJsonConnectionSortByFieldsEnum>;
-  order: authorJsonConnectionSortOrderValues | null;
-}
-
-export type AuthorJsonConnectionSortByFieldsEnum = "id" | "bio" | "avatar" | "twitter" | "github" | "children" | "parent" | "internal___contentDigest" | "internal___type" | "internal___owner";
-
-export type authorJsonConnectionSortOrderValues = "ASC" | "DESC";
-
-export interface filterAuthorJson {
-  id: authorJsonConnectionIdQueryString_2 | null;
-  bio: authorJsonConnectionBioQueryString_2 | null;
-  avatar: authorJsonConnectionAvatarQueryString_2 | null;
-  twitter: authorJsonConnectionTwitterQueryString_2 | null;
-  github: authorJsonConnectionGithubQueryString_2 | null;
-  internal: authorJsonConnectionInternalInputObject_2 | null;
-}
-
-export interface authorJsonConnectionIdQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionBioQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionAvatarQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionTwitterQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionGithubQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionInternalInputObject_2 {
-  contentDigest: authorJsonConnectionInternalContentDigestQueryString_2 | null;
-  type: authorJsonConnectionInternalTypeQueryString_2 | null;
-  owner: authorJsonConnectionInternalOwnerQueryString_2 | null;
-}
-
-export interface authorJsonConnectionInternalContentDigestQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionInternalTypeQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonConnectionInternalOwnerQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface AuthorJsonConnection {
-  pageInfo: PageInfo;
-  edges: Array<AuthorJsonEdge> | null;
-  totalCount: number | null;
-  distinct: Array<string> | null;
-  group: Array<authorJsonGroupConnectionConnection> | null;
-}
-
-export interface DistinctAuthorJsonConnectionArgs {
-  field: authorJsonDistinctEnum | null;
-}
-
-export interface GroupAuthorJsonConnectionArgs {
-  skip: number | null;
-  limit: number | null;
-  field: authorJsonGroupEnum | null;
-}
-
-export interface AuthorJsonEdge {
-  node: AuthorJson | null;
-  next: AuthorJson | null;
-  previous: AuthorJson | null;
-}
-
-export type authorJsonDistinctEnum = "id" | "bio" | "avatar" | "twitter" | "github" | "parent" | "internal___contentDigest" | "internal___type" | "internal___owner";
-
-export type authorJsonGroupEnum = "id" | "bio" | "avatar" | "twitter" | "github" | "parent" | "internal___contentDigest" | "internal___type" | "internal___owner";
-
-export interface authorJsonGroupConnectionConnection {
-  pageInfo: PageInfo;
-  edges: Array<authorJsonGroupConnectionEdge> | null;
-  field: string | null;
-  fieldValue: string | null;
-  totalCount: number | null;
-}
-
-export interface authorJsonGroupConnectionEdge {
-  node: AuthorJson | null;
-  next: AuthorJson | null;
-  previous: AuthorJson | null;
-}
-
 export interface sitePageComponentQueryString {
   eq: string | null;
   ne: string | null;
@@ -2274,9 +2302,9 @@ export interface sitePluginPluginOptionsInputObject_2 {
   path: sitePluginPluginOptionsPathQueryString_2 | null;
   maxWidth: sitePluginPluginOptionsMaxWidthQueryInteger_2 | null;
   backgroundColor: sitePluginPluginOptionsBackgroundColorQueryString_3 | null;
-  wrapperStyle: sitePluginPluginOptionsWrapperStyleQueryString | null;
-  linkImagesToOriginal: sitePluginPluginOptionsLinkImagesToOriginalQueryBoolean | null;
-  pathPrefix: sitePluginPluginOptionsPathPrefixQueryString | null;
+  wrapperStyle: sitePluginPluginOptionsWrapperStyleQueryString_2 | null;
+  linkImagesToOriginal: sitePluginPluginOptionsLinkImagesToOriginalQueryBoolean_2 | null;
+  pathPrefix: sitePluginPluginOptionsPathPrefixQueryString_2 | null;
   short_name: sitePluginPluginOptionsShortNameQueryString_2 | null;
   start_url: sitePluginPluginOptionsStartUrlQueryString_2 | null;
   background_color: sitePluginPluginOptionsBackgroundColorQueryString_4 | null;
@@ -2328,9 +2356,9 @@ export interface sitePluginPluginOptionsPluginsVersionQueryString_2 {
 export interface sitePluginPluginOptionsPluginsPluginOptionsInputObject_2 {
   maxWidth: sitePluginPluginOptionsPluginsPluginOptionsMaxWidthQueryInteger_2 | null;
   backgroundColor: sitePluginPluginOptionsPluginsPluginOptionsBackgroundColorQueryString_2 | null;
-  wrapperStyle: sitePluginPluginOptionsPluginsPluginOptionsWrapperStyleQueryString | null;
-  linkImagesToOriginal: sitePluginPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean | null;
-  pathPrefix: sitePluginPluginOptionsPluginsPluginOptionsPathPrefixQueryString | null;
+  wrapperStyle: sitePluginPluginOptionsPluginsPluginOptionsWrapperStyleQueryString_2 | null;
+  linkImagesToOriginal: sitePluginPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean_2 | null;
+  pathPrefix: sitePluginPluginOptionsPluginsPluginOptionsPathPrefixQueryString_2 | null;
 }
 
 export interface sitePluginPluginOptionsPluginsPluginOptionsMaxWidthQueryInteger_2 {
@@ -2345,19 +2373,19 @@ export interface sitePluginPluginOptionsPluginsPluginOptionsBackgroundColorQuery
   glob: string | null;
 }
 
-export interface sitePluginPluginOptionsPluginsPluginOptionsWrapperStyleQueryString {
+export interface sitePluginPluginOptionsPluginsPluginOptionsWrapperStyleQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
   glob: string | null;
 }
 
-export interface sitePluginPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean {
+export interface sitePluginPluginOptionsPluginsPluginOptionsLinkImagesToOriginalQueryBoolean_2 {
   eq: boolean | null;
   ne: boolean | null;
 }
 
-export interface sitePluginPluginOptionsPluginsPluginOptionsPathPrefixQueryString {
+export interface sitePluginPluginOptionsPluginsPluginOptionsPathPrefixQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
@@ -2397,19 +2425,19 @@ export interface sitePluginPluginOptionsBackgroundColorQueryString_3 {
   glob: string | null;
 }
 
-export interface sitePluginPluginOptionsWrapperStyleQueryString {
+export interface sitePluginPluginOptionsWrapperStyleQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
   glob: string | null;
 }
 
-export interface sitePluginPluginOptionsLinkImagesToOriginalQueryBoolean {
+export interface sitePluginPluginOptionsLinkImagesToOriginalQueryBoolean_2 {
   eq: boolean | null;
   ne: boolean | null;
 }
 
-export interface sitePluginPluginOptionsPathPrefixQueryString {
+export interface sitePluginPluginOptionsPathPrefixQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
@@ -2897,27 +2925,37 @@ export interface fileRdevQueryInteger_2 {
   ne: number | null;
 }
 
+export interface fileBlksizeQueryInteger_2 {
+  eq: number | null;
+  ne: number | null;
+}
+
 export interface fileInoQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileAtimeMsQueryFloat_2 {
+export interface fileBlocksQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileMtimeMsQueryFloat_2 {
+export interface fileAtimeMsQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileCtimeMsQueryFloat_2 {
+export interface fileMtimeMsQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
 
-export interface fileBirthtimeMsQueryFloat_2 {
+export interface fileCtimeMsQueryInteger_2 {
+  eq: number | null;
+  ne: number | null;
+}
+
+export interface fileBirthtimeMsQueryInteger_2 {
   eq: number | null;
   ne: number | null;
 }
@@ -3154,6 +3192,68 @@ export interface resizeOriginalNameQueryString_3 {
   glob: string | null;
 }
 
+export interface authorJsonIdQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonBioQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonAvatarQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonTwitterQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonGithubQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonInternalInputObject_2 {
+  contentDigest: authorJsonInternalContentDigestQueryString_2 | null;
+  type: authorJsonInternalTypeQueryString_2 | null;
+  owner: authorJsonInternalOwnerQueryString_2 | null;
+}
+
+export interface authorJsonInternalContentDigestQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonInternalTypeQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
+export interface authorJsonInternalOwnerQueryString_2 {
+  eq: string | null;
+  ne: string | null;
+  regex: string | null;
+  glob: string | null;
+}
+
 export interface markdownRemarkIdQueryString_2 {
   eq: string | null;
   ne: string | null;
@@ -3343,68 +3443,6 @@ export interface timeToReadQueryInt_3 {
 }
 
 export interface tableOfContentsQueryString_3 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonIdQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonBioQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonAvatarQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonTwitterQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonGithubQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonInternalInputObject_2 {
-  contentDigest: authorJsonInternalContentDigestQueryString_2 | null;
-  type: authorJsonInternalTypeQueryString_2 | null;
-  owner: authorJsonInternalOwnerQueryString_2 | null;
-}
-
-export interface authorJsonInternalContentDigestQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonInternalTypeQueryString_2 {
-  eq: string | null;
-  ne: string | null;
-  regex: string | null;
-  glob: string | null;
-}
-
-export interface authorJsonInternalOwnerQueryString_2 {
   eq: string | null;
   ne: string | null;
   regex: string | null;
