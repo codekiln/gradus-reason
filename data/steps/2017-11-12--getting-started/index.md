@@ -133,6 +133,6 @@ in Reason, the branches of an if-else expression must return the same type:
 2.  Consider `1 + 2 mod 3`, `(1 + 2) mod 3`, and `1 + (2 mod 3)`. What does this mean 
     about `+` vs `mod`?
 3.  What are the values of `min_int` and `max_int`? What do they come from?
-4.  What happens if you do `'c' > 'b'`?
+4.  What is the result of the expression `'c' > 'b'`?
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-11-12--getting-started/index.md)_
