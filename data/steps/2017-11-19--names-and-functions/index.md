@@ -50,8 +50,10 @@ Js.log(neg(2));
 Js.log(neg(-2));
 ```
 
-    Reason # neg(true);
-    Error: This expression has type bool but an expression was expected of type int
+In the editor above, try entering `Js.log(neg(true));`. You should get the error: 
+"Error: This expression has type bool but an expression was expected of type int."
+This is because Reason is strongly typed, and it has interpreted neg as a function
+that takes an int and returns an int.
 
 Here's a function which takes a char and returns true if it is a vowel. 
 This uses referential equality, which is documented in 
@@ -71,8 +73,8 @@ true if they add to ten:
 ```reason
 let addtoten = (a, b) =>
   a + b === 10;
-addtoten(6, 4);
-addtoten(5, 7);
+Js.log(addtoten(5, 7));
+Js.log(addtoten(6, 4));
 ```
 
 Here's a recursive function, which computes the factorial
@@ -94,8 +96,8 @@ of two integers, using the `mod` operator:
 ```reason
 let rec gcd = (a, b) =>
   b === 0 ? a : gcd(b, a mod b);
-gcd(120, 60);
-gcd(120, 64);
+Js.log(gcd(120, 60));
+Js.log(gcd(120, 64));
 ```
 
 ## Explorations

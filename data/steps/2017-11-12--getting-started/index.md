@@ -110,10 +110,10 @@ abstractions that are more difficult to misuse.
 
 Next, two examples showing conditional logic. See also [Reason docs on if-else](https://reasonml.github.io/guide/language/if-else).
 
-    Reason # if (60 > 50) {0} else {1};
-    - : int = 0                                                                                        
-    Reason # 60 > 50 ? 0 : 1;
-    - : int = 0                                                                                        
+```reason
+Js.log(if (60 > 50) {0} else {1});
+Js.log(60 > 50 ? 0 : 1);
+```
 
 In the first, we see that in Reason if else is an _expression that returns a value_, 
 just like ternary expressions. With one further example it's possible to see that 
