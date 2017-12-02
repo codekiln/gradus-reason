@@ -124,7 +124,7 @@ a taste of what it's like to use `switch` to do make clear code paths.
 
 Use pattern matching to write a function that ...
 
-1.  returns the sum of integers 1 thorugh _n_
+1.  returns the sum of integers 1 through _n_
 2.  computes _x_ to the power of _n_
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-12-03--pattern-matching-intro/index.md)_
