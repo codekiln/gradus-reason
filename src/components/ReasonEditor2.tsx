@@ -172,7 +172,7 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
             {compileError &&
               <div>
                 <div>
-                  {compileError}
+                  {compileError.js_error_msg}
                 </div>
               </div>}
           </List.Content>
@@ -355,6 +355,7 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
       } catch (e) {
         this.errorTimerId = setTimeout(
           () => this.setState(() => {
+            const syntaxError = e.hasOwnProperty("location") ? e as SyntaxError : null;
             return {
               compileError: null,
               js: "",
@@ -362,7 +363,7 @@ export default class ReasonEditor2 extends React.Component<ReasonEditor2Props, R
               ocaml: "",
               ocamlSyntaxError: null,
               output: [],
-              reasonSyntaxError: e as SyntaxError,
+              reasonSyntaxError: syntaxError,
             };
           }),
           errorTimeout,
