@@ -6,9 +6,11 @@ author: "Myer Nore"
 tags:
   - pattern_matching
   - variants
-image: default.jpg
+image: wall_by_nigel_appleton_flickr.jpg
 draft: false
 ---
+
+<sup><quote>Image Credit: [_Wall_ by Nigel Appleton on Flickr](https://www.flickr.com/photos/nigelappleton/1464768432/in/photolist-3erjC9-PTSC9K-4nJkdk-n5aMvJ-3gHgr3-R8vP8v-EcfmZ8-9xykkt-8aNEsQ-8Cm7Ds-qoqvAX-98kGGt-8ZgtEA-pq7JYs-qV78yB-QyhbF1-QUmEbW-TYaiKG-5Nku1X-3KGy9w-PRa3Fh-QWYhSP-4Gmc7R-djCNth-PTTz7v-QWYf3F-5LPGCh-XFcT4N-aa7itJ-boqf9z-qaDy2n-PRai3y-6MfKzG-sn4PAc-PRbEih-e4haW1-p6YGQ-f4hQxr-nBveGm-4fuunE-9xWtdU-PTU3jX-EvivH-9z4MMk-9xWsCC-9bQW8-zBV5G-4Gy1QA-8Zf2o6-QWWZDT)</quote></sup>
 
 ## Pattern Matching / Switch
 
@@ -116,6 +118,6 @@ Js.log(scrabbleLetterScore('q'))
 
 Both pattern matching and variants are much more important to Reason than we've let on here.
 Before we touch on that we need to introduce more data structures. Hopefully this post gives 
-a taste of what it's like to use `switch` to do make clear paths in code.
+a taste of what it's like to use `switch` to do make clear code paths.
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-12-03--pattern-matching-intro/index.md)_
