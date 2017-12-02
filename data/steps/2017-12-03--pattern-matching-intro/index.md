@@ -13,7 +13,7 @@ draft: false
 ## Pattern Matching / Switch
 
 In the [last post](https://codekiln.github.io/gradus-reason/steps/2017-11-19--names-and-functions/),
-recall the `factorial` function:
+recall the factorial function:
 
 ```reason
 let rec factorial = (a) =>
