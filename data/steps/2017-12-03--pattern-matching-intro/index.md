@@ -7,7 +7,7 @@ tags:
   - pattern_matching
   - variants
 image: default.jpg
-draft: true
+draft: false
 ---
 
 ## Pattern Matching / Switch
@@ -70,7 +70,7 @@ Let's convert this to using the switch statement:
 
 Consider the [Fibonacci series](https://en.wikipedia.org/wiki/Fibonacci_number), 
 `1, 1, 2, 3, 5, 8, 13...`, where each number is the sum of the prior two numbers.
-To write a function that gives the _n_th Fibonacci number, one can use of pattern matching.
+To write a function that gives the \_n_th Fibonacci number, one can use of pattern matching.
 This shows that one doesn't need to discard the default case and can reuse it as a variable 
 in a subsequent function call:
 
