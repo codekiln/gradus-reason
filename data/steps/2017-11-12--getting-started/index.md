@@ -7,7 +7,7 @@ tags:
   - meta
   - rtop
   - conditionals
-  - operator_precedence
+  - operator-precedence
   - booleans
 image: gradus_header.png
 draft: false

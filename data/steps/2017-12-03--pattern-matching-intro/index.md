@@ -4,7 +4,7 @@ createdDate: "2017-12-03"
 updatedDate: "2017-12-03"
 author: "Myer Nore"
 tags:
-  - pattern_matching
+  - pattern-matching
   - variants
 image: wall_by_nigel_appleton_flickr.jpg
 draft: false
