@@ -73,6 +73,9 @@ for (i in 0 to String.length(myWord) - 1) {
 }
 ```
 
+Here I've also used the [`String.make`](https://reasonml.github.io/api/String.html) function, which can 
+make a string from a char.
+
 Consider the [Fibonacci series](https://en.wikipedia.org/wiki/Fibonacci_number), 
 `1, 1, 2, 3, 5, 8, 13...`, where each number is the sum of the prior two numbers.
 To write a function that gives the \_n_th Fibonacci number, one can use of pattern matching.
