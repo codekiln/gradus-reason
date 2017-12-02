@@ -44,12 +44,12 @@ the function, which identifies the types it takes and the types it returns.
 Let's look at a function that returns true if a provided int is negative and 
 returns false otherwise:
 
-    Reason # let neg = (x) => if (x < 0) {true} else {false};
-    let neg: (int) => bool;                                                                   
-    Reason # neg(2);
-    - : bool = false                                                                                  
-    Reason # neg(-2);
-    - : bool = true                                                                                   
+```reason
+let neg = (x) => if (x < 0) {true} else {false};
+Js.log(neg(2));
+Js.log(neg(-2));
+```
+
     Reason # neg(true);
     Error: This expression has type bool but an expression was expected of type int
 
@@ -57,24 +57,23 @@ Here's a function which takes a char and returns true if it is a vowel.
 This uses referential equality, which is documented in 
 [the reason docs for Boolean](https://reasonml.github.io/guide/language/boolean):
 
-    Reason # let isvowel = (c) =>
-      c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';
-    let isvowel: (char) => bool;                                                              
-    Reason # isvowel('a');
-    - : bool = true                                                                                   
-    Reason # isvowel('b');
-    - : bool = false
+```reason
+let isvowel = (c) =>
+  c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';
+
+Js.log(isvowel('a'));
+Js.log(isvowel('b'));
+```
 
 Here's a function that takes two parameters `a` and `b`, and returns 
 true if they add to ten:
 
-    Reason # let addtoten = (a, b) =>
-      a + b === 10;
-    let addtoten: (int, int) => bool;                                                         
-    Reason # addtoten(6, 4);
-    - : bool = true                                                                                   
-    Reason # addtoten(5, 7);
-    - : bool = false
+```reason
+let addtoten = (a, b) =>
+  a + b === 10;
+addtoten(6, 4);
+addtoten(5, 7);
+```
 
 Here's a recursive function, which computes the factorial
 of a provided integer: 
@@ -92,13 +91,12 @@ of a provided integer:
 Finally, here's a recursive function that computes the greatest common divisor
 of two integers, using the `mod` operator:
 
-    Reason # let rec gcd = (a, b) =>
-      b === 0 ? a : gcd(b, a mod b);
-    let gcd: (int, int) => int;                                                               
-    Reason # gcd(120, 60);
-    - : int = 60                                                                                      
-    Reason # gcd(120, 64);
-    - : int = 8                                                                                       
+```reason
+let rec gcd = (a, b) =>
+  b === 0 ? a : gcd(b, a mod b);
+gcd(120, 60);
+gcd(120, 64);
+```
 
 ## Explorations
 
