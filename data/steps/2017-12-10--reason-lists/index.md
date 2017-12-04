@@ -13,7 +13,7 @@ draft: false
 
 The [Reason docs for lists are here](https://reasonml.github.io/guide/language/list-and-array), and 
 [the API docs for the List module are here](https://reasonml.github.io/api/List.html). 
-A list in Reason OCaml is [linked list](https://en.wikipedia.org/wiki/Linked_list). 
+A list in Reason OCaml is a [linked list](https://en.wikipedia.org/wiki/Linked_list). 
 
 In ReasonML, a List is divided into a single-element `head` and the rest of the list, 
 called the `tail`.
@@ -101,9 +101,9 @@ In addition to `|>`, `filter` and `iter` from above, this example is powered by:
 ## List: Explorations
 
 Write a function that, given a list, 
-1\. ... returns the list reversed.
-2\. ... returns the palindrome of that list. 
-3\. ... and an item _i_, returns the first index of i in the list, and -1 otherwise.
+1. ... returns the list reversed.
+2. ... returns the palindrome of that list. 
+3. ... and an item _i_, returns the first index of i in the list, and -1 otherwise.
 
 Image Credit: [_List_ by Nik Stanbridge on Flickr](https://www.flickr.com/photos/eatmorechips/4409864210/in/photolist-RTupz-89gRpz-bmUhXz-4DRFUr-3dVPg-5abzWy-6rHgR1-89gQNP-6xCxfo-89gN2F-7Ujixw-89gU5r-89k4Ky-dSzDtN-7WBfAg-89gNJV-3mB89t-B5fMhw-cG8Pxm-9VG1S8-8b97w-63QX9B-rkYzrp-y5Vct-kLouK-98D7Uc-98Gffq-VvDvrd-98D6uM-po287f-QAXg39-wDFdbC-xzSiSQ-8DqirA-VvDvXJ-wiFftw-MpjHo7-KZD1N5-L1DEi2-LXdKcv-pSFpw7-b2VdLz-98GdLS-89gTrt-89k2Ad-7HFGZy-72NR3g-6jeekC-6hm77B-5h5qPj/)
 
