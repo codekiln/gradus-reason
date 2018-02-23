@@ -6,7 +6,7 @@ author: "Myer Nore"
 tags:
   - floats
 image: default.jpg
-draft: true
+draft: false
 ---
 
 ## Integers and Floating Points
@@ -40,11 +40,3 @@ see that multiplying floats is done with `*.`:
     Error: This expression has type int but an expression was expected of type float
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2018-01-01--floats-vs-ints/index.md)_
-
-## TODO
-
--   [ ] Replace default.jpg image for this step
--   [ ] Write an awesome article
--   [ ] Remove these todos
--   [ ] `git add ./data/steps/2017-12-01--floats-vs-ints; git commit -m "Added Floats vs Ints step"`
--   [ ] PR to [gradus-reason](https://github.com/codekiln/gradus-reason)
