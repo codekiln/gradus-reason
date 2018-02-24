@@ -17,21 +17,26 @@ with certain attributes and their types. To make a new Record type,
 use the `type` keyword with the curly braces:
 
 ```reason
-type Contact = {
-    FirstName: string,
-    MiddleInitial: string,
-    LastName: string,
-    EmailAddress: string,
-    IsEmailVerified: bool
+type contact = {
+    firstName: string,
+    middleInitial: string,
+    lastName: string,
+    emailAddress: string,
+    isEmailVerified: bool
 };
 
-let person1: Contact = {
-    FirstName: "Richard",
-    MiddleInitial: "G",
-    LastName: "Montgomery",
-    EmailAddress: "RichardGMontgomery@dayrep.com",
-    IsEmailVerified: False
-}
+let person1: contact = {
+    firstName: "Richard",
+    middleInitial: "G",
+    lastName: "Montgomery",
+    emailAddress: "RichardGMontgomery@dayrep.com",
+    isEmailVerified: false
+};
+
+Js.log("greetings, " ++ person1.firstName);
+let verifiedStr = person1.isEmailVerified
+  ? "is verified" : "is not verified";
+Js.log("email " ++ verifiedStr);
 ```
 
 Here, [`bool` is the ReasonML boolean](https://reasonml.github.io/docs/en/boolean.html), and [`string` is the ReasonML string](https://reasonml.github.io/docs/en/string-and-char.html).
