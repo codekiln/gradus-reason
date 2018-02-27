@@ -127,6 +127,11 @@ Use pattern matching to write a function that ...
 1.  returns the sum of integers 1 through _n_
 2.  computes _x_ to the power of _n_
 
+## Links
+
+1.  Dr. Axel Rauschmayer has written an extensive post on this topic,
+    [_Pattern matching in ReasonML: destructuring, switch, if expressions_](http://2ality.com/2017/12/pattern-matching-reasonml.html)
+
 Image Credit: [_Wall_ by Nigel Appleton on Flickr](https://www.flickr.com/photos/nigelappleton/1464768432/in/photolist-3erjC9-PTSC9K-4nJkdk-n5aMvJ-3gHgr3-R8vP8v-EcfmZ8-9xykkt-8aNEsQ-8Cm7Ds-qoqvAX-98kGGt-8ZgtEA-pq7JYs-qV78yB-QyhbF1-QUmEbW-TYaiKG-5Nku1X-3KGy9w-PRa3Fh-QWYhSP-4Gmc7R-djCNth-PTTz7v-QWYf3F-5LPGCh-XFcT4N-aa7itJ-boqf9z-qaDy2n-PRai3y-6MfKzG-sn4PAc-PRbEih-e4haW1-p6YGQ-f4hQxr-nBveGm-4fuunE-9xWtdU-PTU3jX-EvivH-9z4MMk-9xWsCC-9bQW8-zBV5G-4Gy1QA-8Zf2o6-QWWZDT)
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2017-12-03--pattern-matching-intro/index.md)_

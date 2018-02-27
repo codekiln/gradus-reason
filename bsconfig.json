@@ -1,0 +1,21 @@
+{
+  "name": "gradus-reason",
+  "sources": [
+    "data/steps/2018-02-25--variants"
+  ],
+  "bs-dependencies": [
+    "reason-react"
+  ],
+  "reason": {
+    "react-jsx": 2
+  },
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
+  "refmt": 3,
+  "package-specs": [
+    {
+      "module": "es6"
+    }
+  ]
+}

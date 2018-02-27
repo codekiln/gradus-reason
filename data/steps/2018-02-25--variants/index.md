@@ -66,49 +66,46 @@ providing any additional information.
 It is also possible to declare Variants that take parameters, which allow
 for structured information to be conveyed in the type.
 
-Imagine we wanted to mark up text for the web. The following types
+Imagine we wanted to capture contact information. The following types
 may be useful:
 
 ```reason
-type htmlColor =
-  | Black | Silver | Gray | White | Maroon | Red | Purple | Fuchsia
-  | Green | Lime | Olive | Yellow | Navy | Blue | Teal | Aqua;
-
-type weight =
-  | Regular
-  | Bold;
-
-type color =
-  | NamedColor(htmlColor, weight)
-  | RGB(int, int, int)
-  | Gray(int)
-  | DefaultColor;
-
-type styledText = {
-    text: string,
-    color: color
+type contactInfo = Email(string) | Phone(string);
+type verifiable('a) = Verified('a) | Unverified('a);
+type user = {
+  name: string,
+  contact1: verifiable(contactInfo),
+  contact2: option(verifiable(contactInfo))
 };
 
-type styledParagraph = List(styledText);
-
-let render = (txt, ~style="") =>
-    "[span style=" ++ style ++ " text=" ++ txt ++ "]";
-
-let renderStyledParagraph = fun
-  | styledText(text, DefaultColor) => render(text);
-
-let myParagraph = [
-  styledText("The quick ", DefaultColor),
-  styledText("brown ", RGB(176, 61, 50),
-  styledText("fox ", NamedColor(Red, Regular)),
-  styledText("jumps over the lazy ", DefaultColor),
-  styledText("dog.", Gray(166))
+let users: list(user) = [
+  {
+    name: "Lisa R. Gibbons",
+    contact1: Unverified(Email("LisaRGibbons@armyspy.com")),
+    contact2: None
+  },
+  {
+    name: "Adam L. Petty",
+    contact1: Verified(Phone("208-580-5336")),
+    contact2: Some(Unverified(Email("AdamLPetty@dayrep.com")))
+  }
 ];
 
-renderStyledParagraph(myParagraph) |> List.iter(Js.log);
+users |> List.iter((user) => {
+  let userStr = switch (user) {
+    | {name, contact1: Verified(c1), contact2} => switch(c1){
+      | Email(em) => name ++ " (v. email " ++ em ++ ")"
+      | Phone(ph) => name ++ " (v. phone " ++ ph ++ ")"
+    }
+    | {name, contact1: Unverified(c1), contact2} => switch(c1) {
+      | Email(em) => name ++ " (u. email " ++ em ++ ")"
+      | Phone(ph) => name ++ " (u. phone " ++ ph ++ ")"
+    }
+    | {name, contact1, contact2} => name
+  };
+  Js.log(userStr);
+});
 ```
-
-Variants can also
 
 ## Variant—Trees of Types
 
@@ -130,6 +127,10 @@ let myTree = Tree(
         Leaf(5)
     )
 );
+
+/**
+Exercise left to user: print the tree!
+**/
 ```
 
 ## Links
@@ -140,6 +141,7 @@ installed in Chrome, you can automatically convert between OCaml examples
 you see on the web and ReasonML.
 
 -   [Variants - ReasonML Docs](https://reasonml.github.io/docs/en/variant.html)
+-   [Variants - _Exploring ReasonML_ Book by Dr. Axel Rauschmayer](http://reasonmlhub.com/exploring-reasonml/ch_variants.html)
 -   [Variants - Real World OCaml Book](https://realworldocaml.org/v1/en/html/variants.html)
 -   [Variants - OCaml Docs](https://ocaml.org/learn/tutorials/data_types_and_matching.html#Variants-qualified-unions-and-enums)
 -   [Variants - Haifeng Li's blog](https://haifengl.wordpress.com/2014/07/07/ocaml-algebraic-data-types/)

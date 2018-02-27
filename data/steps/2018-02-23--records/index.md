@@ -98,6 +98,11 @@ with the previous properties copied in. This is called "immutable update"
 because the previous object is not changed in memory; instead, a new
 object is created.
 
+## Links
+
+-   [Reason Docs: Record](https://reasonml.github.io/docs/en/record.html)
+-   [ReasonML: records - by Dr. Axel Rauschmayer](http://2ality.com/2018/01/records-reasonml.html)
+
 Image Credit: [_Records_ by Thomas on Flickr](https://www.flickr.com/photos/_-o-_/8091614099/in/photolist-dk2CXV-2eZnAT-9uDtSe-uv9kE-mPvd2i-95NWFe-5AvX1a-7wWD4H-6bfdTu-4E2uq-68Y9SC-9fZsgA-duu53y-9uGsXs-9uFu1V-9uJs7J-9uDtHR-mt9Tut-9uDsnt-UobUs7-7jVeAU-a9aAQQ-W7qamU-9tPRui-cp8HB-72aKnT-6f461Y-qtdqN5-9uJsXo-jKHWo-bJ7wW-6Menaa-AprvT8-4hJbaM-4hJ7UR-gNux1-4Nt7uf-SSRFx4-4hNbUm-4hJ7kD-57qf9P-4hNfzq-4hJ756-97625P-4hJ89H-9762ci-ffSKCZ-ajarzJ-HkD166-8MafAw/)
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2018-02-23--records/index.md)_
