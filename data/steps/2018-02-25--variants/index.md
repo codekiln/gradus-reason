@@ -59,26 +59,39 @@ If you want to know more about this syntax, see
 
 Variants let you combine types like legos, snapping them together.
 
-The Variants used above are constructed with zero parameters; to use
-the example above, `Dog` constructs a `speakingAnimal` type without
-providing any additional information.
+The Variants above are constructed with zero parameters; `Dog`
+constructs a `speakingAnimal` type without providing any additional
+information.
 
-It is also possible to declare Variants that take parameters, which allow
-for structured information to be conveyed in the type.
+It is also possible to declare Variants with take parameters, which
+allow for structured information to be conveyed in the type.
 
-Imagine we wanted to capture contact information. The following types
-may be useful:
+Imagine we wanted to capture contact information, and that we had
+a business rule that a person must have a primary contact
+and may have a secondary contact, and each contact method could
+be either verified or unverified, and valid contact types include
+email and phone. The following example lays out some types that can
+model this domain:
 
 ```reason
-type contactInfo = Email(string) | Phone(string);
-type verifiable('a) = Verified('a) | Unverified('a);
+type contactInfo =
+  | Email(string)
+  | Phone(string);
+
+type verifiable('a) =
+  | Verified('a)
+  | Unverified('a);
+
+/* we can easily make an alias for a compound type */
+type verifiableContactable = verifiable(contactInfo);
+
 type user = {
   name: string,
-  contact1: verifiable(contactInfo),
-  contact2: option(verifiable(contactInfo))
+  contact1: verifiableContactable,
+  contact2: option(verifiableContactable)
 };
 
-let users: list(user) = [
+let users = [
   {
     name: "Lisa R. Gibbons",
     contact1: Unverified(Email("LisaRGibbons@armyspy.com")),
@@ -91,21 +104,48 @@ let users: list(user) = [
   }
 ];
 
-users |> List.iter((user) => {
-  let userStr = switch (user) {
-    | {name, contact1: Verified(c1), contact2} => switch(c1){
-      | Email(em) => name ++ " (v. email " ++ em ++ ")"
-      | Phone(ph) => name ++ " (v. phone " ++ ph ++ ")"
-    }
-    | {name, contact1: Unverified(c1), contact2} => switch(c1) {
-      | Email(em) => name ++ " (u. email " ++ em ++ ")"
-      | Phone(ph) => name ++ " (u. phone " ++ ph ++ ")"
-    }
-    | {name, contact1, contact2} => name
-  };
-  Js.log(userStr);
-});
+let renderContactable =
+  fun
+  | Email(em) => "email " ++ em
+  | Phone(ph) => "phone " ++ ph;
+
+let renderVerifiable =
+  fun
+  | Verified(info) => " (ver. " ++ renderContactable(info) ++ ")"
+  | Unverified(info) => " (unver. " ++ renderContactable(info) ++ ")";
+
+let renderUser =
+  fun
+  | {name, contact1: c1, contact2: None} => name ++ " " ++ renderVerifiable(c1)
+  | {name, contact1: c1, contact2: Some(c2)} =>
+    name ++ " " ++ renderVerifiable(c1) ++ ", " ++ renderVerifiable(c2);
+
+List.map(renderUser, users) |> List.iter(Js.log);
 ```
+
+In this example, the `contactInfo` variant has two type constructors.
+Unlike the `Dog` type constructor that didn't take any parameters,
+each `contactInfo` takes a single string as a parmeter: this means that
+you can't construct an `Email` or `Phone` without providing a string.
+
+The `verifiable` variant takes a type and returns two types, one
+which is `Verified`, and one which is `Unverified` for that passed type.
+The `verifiable` variant doesn't need to know anything about the types
+it surrounds and conveys information for.
+
+When we set up the `user` record type, we declare that `contact1` must
+be a `verifiableContactable`, which is a type alias for either a verified
+or unverified email or phone.
+
+By using the [Single Argument Match Functions](https://reasonml.github.io/docs/en/comparison-to-ocaml.html#single-argument-match-functions),
+it's easy to construct several render functions that can print
+all the combinations of users. Try adding some users above with different
+combinations, or changing the render format.
+
+This example also features the [**option type**](https://reasonml.github.io/docs/en/newcomer-examples.html#using-the-option-type), which is quite simple and heavily used.
+The option type represents either Some(something) or None. By representing
+an option this way, we can avoid [three valued logic](https://en.wikipedia.org/wiki/Three-valued_logic)
+and know for sure whether something exists or not.
 
 ## Variant—Trees of Types
 
