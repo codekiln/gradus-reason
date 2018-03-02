@@ -120,6 +120,27 @@ Both pattern matching and variants are much more important to Reason than we've 
 Before we touch on that we need to introduce more data structures. Hopefully this post gives 
 a taste of what it's like to use `switch` to do make clear code paths.
 
+## Pattern Matching with Arrays
+
+```reason
+let myArr = [|1, 2, 3, 4|];
+let myArr2 = [||];
+let myArr3 = [|"dog", "cat"|];
+
+let processArr =
+  fun
+  | [||] => "empty"
+  | [|_|] => "one"
+  | [|_, _|] => "two"
+  | _ => "many";
+
+Js.log(processArr(myArr));
+Js.log(processArr(myArr2));
+Js.log(processArr(myArr3));
+```
+
+This example is powered by a [Single Argument Match Function](https://reasonml.github.io/docs/en/comparison-to-ocaml.html#single-argument-match-functions).
+
 ## Explorations
 
 Use pattern matching to write a function that ...
