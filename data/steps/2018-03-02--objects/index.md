@@ -11,14 +11,21 @@ image: default.jpg
 draft: false
 ---
 
-## Records Vs Objects - Syntax
+## Records Vs Objects - Basic Example
 
 ```reason
+/* Part 1 ----- Records Example ----- */
 /* declare a record type */
 type contactRecord = {
   name: string,
-  email: string
+  twitter: option(string)
 };
+
+let printContactRec = (contact: contactRecord) =>
+  switch contact.twitter {
+  | Some(tw) => Js.log(contact.name ++ " has twitter " ++ tw)
+  | None => Js.log(contact.name ++ " doesn't have a twitter")
+  };
 
 /*
  instantiate a record with type contactRecord
@@ -26,22 +33,31 @@ type contactRecord = {
  */
 let contactRec: contactRecord = {
   name: "Donald Knuth",
-  email: "taocp@cs.stanford.edu"
+  twitter: None
 };
 
-Js.log(contactRec.name ++ " has/had email " ++ contactRec.email);
+printContactRec(contactRec);
 
+/* Part 2 ---- Objects Example ----- */
 /* declare a "closed" object type - note the single period {. */
 type contactObj = {
   .
   name: string,
-  twitter: string
+  twitter: option(string)
 };
 
-/* instantiate a closed object type */
-let contactObj: contactObject = {name: "Cheng Lou", twitter: "@_chenglou"};
+let printContactObj = (contact: contactObj) =>
+  switch contact#twitter {
+  | Some(tw) => Js.log(contact#name ++ " has twitter " ++ tw)
+  | None => Js.log(contact#name ++ " doesn't have a twitter")
+  };
 
-Js.log(contactObj##name ++ " has twitter " ++ contactObj##twitter);
+let myContact: contactObj = {
+  pub name = "Kehinde Wiley";
+  pub twitter = Some("@kehindewileyart")
+};
+
+printContactObj(myContact);
 ```
 
 ## Objects - Intro
@@ -60,5 +76,6 @@ a tuple too direct? Don't be afraid to use an object."_
 ## Object - Links
 
 -   [Reason Docs on Objects](https://reasonml.github.io/docs/en/object.html)
+-   [Real World OCaml on Objects](https://realworldocaml.org/v1/en/html/objects.html)
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2018-03-02--objects/index.md)_

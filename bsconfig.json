@@ -4,9 +4,7 @@
     "data/steps/2018-02-25--variants",
     "data/steps/2018-03-02--objects"
   ],
-  "bs-dependencies": [
-    "reason-react"
-  ],
+  "bs-dependencies": [],
   "reason": {
     "react-jsx": 2
   },
