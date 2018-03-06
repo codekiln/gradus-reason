@@ -1,7 +1,7 @@
 # Gradus Reason
 
 -   A community site for learning [Reason OCaml](https://reasonml.github.io/)  
--   Go to the [site](https://codekiln.github.io/gradus-reason/)  
+-   Go to the [http://gradus-reason.com/](http://gradus-reason.com/)  
 
 ## Contributing
 
