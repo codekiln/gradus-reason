@@ -95,11 +95,13 @@ This example is powered by:
     itself takes two parameters. The first parameter (here, `map`) is the variable 
     to accumulate results in. The second parameter (here, `user`) is the current object
     in the iteration:
-        List.fold_left(
-              (map, user) => StringMap.add(user.id, user.name, map),
-              StringMap.empty,
-              composers
-          )
+    ```
+    List.fold_left(
+            (map, user) => StringMap.add(user.id, user.name, map),
+            StringMap.empty,
+            composers
+        )
+    ```
     This takes the `composers` array, which is a `list` of `composer` types,
     and executes the supplied folding function `(map, user) => StringMap.add(user.id, user.name, map)`.
     For the first composer, `map` is `StringMap.empty`. For all the other
