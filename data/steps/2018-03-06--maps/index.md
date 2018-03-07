@@ -9,7 +9,7 @@ tags:
   - records
   - fold_left
   - j_string_interpolation
-image: warburton_post_office_boxes_#1_by_mic_stanic_on_flickr.jpg
+image: warburton_post_office_boxes_by_mic_stanic_on_flickr.jpg
 draft: false
 ---
 
