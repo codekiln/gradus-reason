@@ -2,7 +2,8 @@
   "name": "gradus-reason",
   "sources": [
     "data/steps/2018-02-25--variants",
-    "data/steps/2018-03-02--objects"
+    "data/steps/2018-03-02--objects",
+    "data/steps/2018-03-06--maps"
   ],
   "bs-dependencies": [],
   "reason": {
