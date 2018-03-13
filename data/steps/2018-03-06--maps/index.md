@@ -9,6 +9,7 @@ tags:
   - records
   - fold-left
   - j-string-interpolation
+  - functors
 image: warburton_post_office_boxes_by_mic_stanic_on_flickr.jpg
 draft: false
 ---
@@ -75,10 +76,18 @@ let composers: list(composer) = [
     {id: "jbrahms", name: "Johannes Brahms"}
 ];
 
-getComposerMap(composers) 
-  |> StringMap.iter (
+let composerMap = getComposerMap(composers);
+
+Js.log("iterate through & print the composers:");
+Js.log("--------------------------------------");
+composerMap  |> StringMap.iter (
     (id, composerName) => Js.log({j|key:$id, val:$composerName|j})
-    )
+    );
+
+Js.log("                       ");
+Js.log("Find a particular item:");
+Js.log("-----------------------");
+Js.log(StringMap.find("lbeethoven", composerMap));
 ```
 
 This example is powered by: 
@@ -111,13 +120,22 @@ This example is powered by:
 -   [BuckleScript's `j` string interpolation](https://bucklescript.github.io/docs/en/common-data-types.html#interpolation), which 
     looks like `{j|key:$id, val:$composerName|j}` and is the equivalent of JS' [string interpolation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Here, the
     `$id` and `$composerName` variables are resolved from block scope into a `string`.
+-   [Map.Make.find](https://reasonml.github.io/api/Map.Make.html#VALfind) is the
+    method used to get a value by its key. As you can see, the heading for this page
+    says that Map.Make is a "Functor", which in reason is a function that returns a Module.
+    Here, when we did `module StringMap = Map.Make(String);`, that constructed
+    a new, specific instance of the `Map` Module that has `String` map keys.
+    You could think of `Map.Make` as a constructor for a Module, and the
+    constructed module has the same methods listed in the documentation.
 
 ## Map - Links
 
--   [Reason Standard API's _Map_](https://reasonml.github.io/api/Map.html)
+-   [Reason Standard API docs for `Map`](https://reasonml.github.io/api/Map.html)
+-   [Reason Standard API docs for `Map.Make`](https://reasonml.github.io/api/Map.Make.html)
 -   [_Real World OCaml_ on Maps](https://realworldocaml.org/v1/en/html/maps-and-hash-tables.html)
+-   [OCaml Tutorial for `Map`s](https://ocaml.org/learn/tutorials/map.html)
 -   [Glennsl's _bucklescript-cookbook_ guide to Maps and their alternatives](https://github.com/glennsl/bucklescript-cookbook#create-a-map-data-structure-add-or-replace-an-entry-and-print-each-keyvalue-pair)
--   [Reason Discord discussion on Map vs Js.Dict.t](https://discordapp.com/channels/235176658175262720/235176658175262720?jump=419986814288265216)
+-   [Reason Discord discussion on `Map` vs `Js.Dict.t`](https://discordapp.com/channels/235176658175262720/235176658175262720?jump=419986814288265216)
 -   [`List.fold_left`](https://reasonml.github.io/api/List.html#VALfold_left) is 
     the Reason equivalent to JS' [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce). 
     Here's a [Codepen - ES6 + array.reduce](https://codepen.io/codekiln/pen/NXdmvB)
