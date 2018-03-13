@@ -21,7 +21,7 @@ In many applications it becomes necessary to look up a
 other data structure by a unique identifier, just as a phone book
 enables one look up a person's phone number by their name. This structure
 goes by many names: hashtable, lookup table, hashmap, dict, dictionary, map, etc.
-There are tools for this in ReasonML, but two good choices are: 
+There are many tools for this in ReasonML, but two good choices are: 
 
 -   Use [`Map`](https://reasonml.github.io/api/Map.html) from Reason's OCaml standard API. 
     This is a good general-purpose, performant, immutable dictionary and should probably be 
