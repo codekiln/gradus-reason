@@ -28,7 +28,7 @@ module.exports = plop => {
       {
         type: 'input',
         name: 'tags',
-        message: 'tags? (at least one, lowercase, plural, hyphenated, no spaces, separated with a comma if > 1)',
+        message: 'tags? (at least one, lowercase, plural, hyphenated, no spaces or underscores, separated with a comma if > 1)',
         validate: inputRequired('input')
       },
       {

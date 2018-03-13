@@ -7,8 +7,8 @@ tags:
   - hashtables
   - maps
   - records
-  - fold_left
-  - j_string_interpolation
+  - fold-left
+  - j-string-interpolation
 image: warburton_post_office_boxes_by_mic_stanic_on_flickr.jpg
 draft: false
 ---
