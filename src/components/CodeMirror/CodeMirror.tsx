@@ -51,7 +51,7 @@ const langToOptions = {
     lineNumbers: false,
     mode: "javascript",
     readOnly: "nocursor",
-    theme: "ambiance",
+    theme: "neat",
   },
 };
 
