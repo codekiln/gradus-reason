@@ -9,11 +9,9 @@ image: CN_Cabin_D_in_Toronto_by_Marty_Bernard_on_Flickr.jpg
 draft: false
 ---
 
-## Variant—Case Constants For Switch Statements
+## Variants are case constants for switch statements.
 
-Like a [`enum`](https://en.wikipedia.org/wiki/Enumerated_type#TypeScript),
-a Variant is a set of mutually exclusive choices, meant to be used
-with a `switch` statement to easy handle different cases:
+A Variant is a set of mutually exclusive cases to choose from.
 
 ```reason
 type speakingAnimal = Dog | Cat | Bird;
@@ -30,7 +28,7 @@ List.map(speak, [Dog, Cat, Bird])
   |> List.iter(Js.log);
 ```
 
-Here, the expression `type animal = Dog | Cat | Bird` creates a
+The expression `type animal = Dog | Cat | Bird` creates a
 composed type `animal` which consists of and three new types,
 `Dog`, `Cat` and `Bird`. The `speak` function has the type
 `(pet: speakingAnimal): string`, so it takes a `speakingAnimal`
@@ -185,6 +183,7 @@ you see on the web and ReasonML.
 -   [Variants - Real World OCaml Book](https://realworldocaml.org/v1/en/html/variants.html)
 -   [Variants - OCaml Docs](https://ocaml.org/learn/tutorials/data_types_and_matching.html#Variants-qualified-unions-and-enums)
 -   [Variants - Haifeng Li's blog](https://haifengl.wordpress.com/2014/07/07/ocaml-algebraic-data-types/)
+-   [`enum` - Wikipedia](https://en.wikipedia.org/wiki/Enumerated_type#TypeScript)
 
 Image Credit: [_CN Cabin D in Toronto, ON in September 1979_ by Marty Bernard on Flickr](https://www.flickr.com/photos/129679309@N05/32569599444/in/photolist-RC4Hd1-qhmqiA-bVcPXy-dYSEjP-pZq2kZ-iGgxJm-pYe764-SarC3H-V1ZZXS-S2jFSV-RD9TFL-og85Jk-e8ZH8z-SarCrZ-fAt8uA-dj84X4-fHefXD-ekbZ9d-fEdYa8-4f7tYS-e7ppLe-e77Gc9-6Ju6DB-88sE3m-aixzwa-q3Mv4v-85xzzy-omYRht-nYDooo-cCqh2d-22tvuqF-f3FnJ-nQGj9r-34gAKS-4DMuyv-bCcJcX-bCcHcR-SARC5E-pj8Yga-fNXRjJ-88pqqH-fEdZZF-qdN8Bz-dN6QcC-8Ygz59-pvifGf-BMLF4X-dx5pDh-UoeTw6-aZM6kZ)
 
