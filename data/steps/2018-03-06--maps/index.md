@@ -14,7 +14,7 @@ image: warburton_post_office_boxes_by_mic_stanic_on_flickr.jpg
 draft: false
 ---
 
-## Maps - Intro
+## What are Maps?
 
 In many applications it becomes necessary to look up a 
 [Record](/steps/tags/records/), [Object](/steps/tags/objects/) or
@@ -52,7 +52,8 @@ This example declares a new [Record](/steps/tags/records/) type
 called `composer`, then constructs a new `Map` type with `String` instances 
 as the lookup keys. After we have minted a specialized `StringMap` Module,
 we create a `getComposerMap` function which converts a `list` of `composer` types 
-into the `StringMap`. Note: We haven't talked about `Modules` yet in Gradus Reason.
+into the `StringMap`. See the post on [`Modules`](/steps/2018-03-14--modules/)
+in Gradus Reason for more info.
 
 ```reason
 type composer = {
@@ -142,8 +143,5 @@ This example is powered by:
 
 Image Credit: [_Warburton Post Office Boxes_ by Mick Stanic on Flickr](https://www.flickr.com/photos/splatt/316215760/)
 
-## Post - TODO
-
--   [ ] provide a link here to the `Modules` Gradus Reason step when created.
 
 _[Edit this post here](https://github.com/codekiln/gradus-reason/tree/master/data/steps/2018-03-06--maps/index.md)_

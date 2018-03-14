@@ -11,7 +11,10 @@ image: objects_by_kim_anh_on_flickr.jpg
 draft: false
 ---
 
-## Records Vs Objects - Basic Example
+## How is an Object different from a Record?
+
+Here is an example that declares a Record and compares it with the
+equivalent Object definition.
 
 ```reason
 /* Part 1 ----- Records Example ----- */
@@ -60,7 +63,7 @@ let myContact: contactObj = {
 printContactObj(myContact);
 ```
 
-## Objects - Intro
+## What are Objects used for?
 
 Many people do not know what leeks are good for in cooking, so there is a
 proverb: _"An onion too strong, a chive too weak? Don't be afraid to use a leek."_
