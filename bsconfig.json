@@ -1,21 +1,13 @@
 {
   "name": "gradus-reason",
   "sources": [
-    "data/steps/2018-02-25--variants",
-    "data/steps/2018-03-02--objects",
-    "data/steps/2018-03-06--maps"
+    "data/steps/2018-03-14--modules"
   ],
-  "bs-dependencies": [],
   "reason": {
     "react-jsx": 2
   },
   "bsc-flags": [
     "-bs-super-errors"
   ],
-  "refmt": 3,
-  "package-specs": [
-    {
-      "module": "es6"
-    }
-  ]
+  "refmt": 3
 }
