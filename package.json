@@ -8,6 +8,9 @@
   "scripts": {
     "start": "gatsby develop",
     "develop": "gatsby develop",
+    "bsb:clean": "bsb -clean",
+    "bsb:watch": "bsb -make-world -w",
+    "bsb:make": "bsb -make-world",
     "build": "gatsby build --prefix-paths",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "lint": "npm run lint:ts && npm run lint:md && npm run lint:js && npm run lint:css",
@@ -102,7 +105,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "babel-runtime": "^6.26.0",
-    "bs-platform": "^2.2.1",
+    "bs-platform": "^2.2.2",
     "cross-env": "^5.0.5",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
