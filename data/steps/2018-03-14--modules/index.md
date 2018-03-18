@@ -12,10 +12,9 @@ draft: false
 
 ## What are Modules?
 
-Modules group methods and types, and give us an ability to
-engineer private worlds of logic that snap together and 
-hide their internals. This gives us the ability to change the internals
-later on, because clients can only use the published interface.
+Modules group related methods, exceptions and types into a package. In 
+addition, Reason provides module interfaces that make it easier to swap out 
+one module for another module that fulfills the same interface.
 
 ## Module Syntax - Basic Example
 
@@ -24,15 +23,15 @@ a `module` must begin with a capital letter. A variable that begins
 with a capital letter often indicates it is a `module`.
 
 A module declaration looks generally like this:
-`module <CapitalizedName> : <signature> = <implementation>;`. The `signature`
-is optional as it is in Reason's type annotation
+`module <CapitalizedName> : <ModuleInterfaceType> = <implementation>;`. 
+The `ModuleInterfaceType` is optional as it is in Reason's type annotation
 [in a `let binding`](https://reasonml.github.io/docs/en/type.html#annotations):
 `let <variable name here> [: optionalTypeAnnotation] = "concreteValue"`.
 
 Here is a basic example of a Person Module:
 
 ```reason
-/* First, we define an interface that callers will use.
+/* First, we define an interface type that clients will use.
  * This is like a "whitelist"; only things in the `module type` are
  * accessible outside the module. If you are familiar with Java, 
  * this is similar to the Interface for a Class. 
@@ -66,9 +65,97 @@ let p1 = Person.make(~name="Jason Hickey");
 Js.log(Person.toString(p1));
 ```
 
-This example is meant to illustrate the syntax of `module type` and 
-`module` expressions; it does not yet illustrate what is interesting about 
-modules and what they are good for.
+## What problem do Modules solve?
+
+In software, requirements evolve over time with feedback 
+from a product's owner(s).  It often happens that a system needs a new feature 
+that the original engineers did not anticipate. This becomes 
+especially complicated in large projects. For example, if you need to modify
+components A and B to provide a new feature, and components C-M depend on A while 
+components G-Z depend on B, it can become difficult to figure out what will break 
+if the engineers that built A and B are no longer around. This problem gets worse 
+if clients rely on direct implementation details. 
+
+One strategy to is to ensure you can always swap out a component 
+with another "of roughly the same size and shape," that is, with a 
+component that fulfills the contract it currently guarantees its clients. 
+As long as the interface that a component's clients use stays the same, 
+the implementation is free to change.
+
+<iframe src="https://giphy.com/embed/MS0fQBmGGMaRy" width="480" height="253" 
+        frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+### Hypothetical example of why you should use interfaces
+Let's say you are an engineer for a social networking site. Your product's 
+component A used the Google Maps API to display a map of where users are 
+logged in right now. It didn't use an interface and instead exposed the 
+Google Maps data structures to its downstream  components. Other coders 
+ended up using Google Maps' data structures directly in the components they wrote,
+since that was the easiest thing to do. Then your product owner decided to extend 
+your product's prescence in China, [where Google Maps API doesn't work](https://developers.google.com/maps/faq#china_ws_access).
+Now you have to go into all of those downstream components and re-engineer how 
+they are storing data ... ouch. Instead, you should have used an interface hiding how
+the information was stored, and if you need to switch out a different API provider, 
+you won't have to change as many of your components.
+
+## Reason Type Checks and Modules
+
+ReasonML's type checking ensures two things about the relationship between 
+`module` and `module type` expressions: 
+
+1. **interface enforcement**: if a `module type` declares a method, type or 
+   other entity, then the `module` that conforms to that interface must implement 
+   that entity.
+2. **encapsulation**: if it's not in the `module type` for a module, 
+   clients can't see that part of the implementation.
+
+*In the context of ReasonML, the terms interface, 
+signature, and module type are all used interchangeably.*
+
+### Example - module type enforcement
+```reason
+/* Make a new module type S1, e.g. interface for a module */
+module type S1 = {
+  let x: int; 
+  let y: int;
+};
+
+/* We've declared module M1 to be of module type S1. */ 
+module M1: S1 = {
+  let x = 42;
+};
+
+/**
+ The above won't compile; Reason throws this error: 
+ Line 2, 17: Signature mismatch: ... The value `y` is required but not provided
+ **/
+```
+
+Everything in the `module type` must also be in the `module`. We left out `y` from 
+the module M1, and it wouldn't compile.
+
+### Example - module type encapsulation
+```reason
+module type S2 = {
+  let x: int;
+};
+
+module M2: S2 = {
+  let x = 42;
+  let y = 7;
+};
+
+Js.log(M2.y)
+
+/**
+The above won't compile; Reason throws this error:
+Line 4, 15: Unbound value M2.y
+**/
+```
+
+By declaring `M2` to conform to interface `S2`, then everything not in 
+`S2` is "private" to the inside `M2`. Here, we tried to get the "private"
+property `y` outside of `M2`'s closure, so Reason threw a compile time error.
 
 ## Modules - Exercises
 
