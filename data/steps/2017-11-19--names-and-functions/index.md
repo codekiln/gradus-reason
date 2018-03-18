@@ -90,8 +90,10 @@ of a provided integer:
     Reason # factorial(4);
     - : int = 24                                                                                      
 
-Finally, here's a recursive function that computes the greatest common divisor
-of two integers, using the `mod` operator:
+Finally, here's a recursive function that implements 
+[Euclid's algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm) 
+to compute the greatest common divisor of two integers, 
+using the `mod` operator:
 
 ```reason
 let rec gcd = (a, b) =>
@@ -99,6 +101,9 @@ let rec gcd = (a, b) =>
 Js.log(gcd(120, 60));
 Js.log(gcd(120, 64));
 ```
+
+Note: this function later referenced in a *Gradus Reason* exercise in  
+[*Modules*](/steps/2018-03-14--modules/).
 
 ## Explorations
 
