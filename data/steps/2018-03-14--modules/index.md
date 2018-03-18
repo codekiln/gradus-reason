@@ -67,8 +67,8 @@ Js.log(BasicPerson.toString(p1));
 
 ### Fraction Module - Advanced
 
-*This exercise is taken from [Steffen Smolka's](https://github.com/smolkaj) 
-[Cornell's CS 3110 Lecture 7 Lab](http://www.cs.cornell.edu/courses/cs3110/2018sp/l/07-modules/lab.html)*
+*This exercise is [Steffen Smolka's](https://github.com/smolkaj), taken from  
+[Cornell's CS 3110 Lecture 7 Lab](http://www.cs.cornell.edu/courses/cs3110/2018sp/l/07-modules/lab.html).*
 
 Write a module implementing the following `Fraction` module type:
 
